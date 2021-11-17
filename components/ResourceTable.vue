@@ -43,6 +43,11 @@ export default {
       default: true
     },
 
+    searchOption: {
+      type:    Boolean,
+      default: false
+    },
+
     tableActions: {
       // Show bulk table actions
       type:    [Boolean, null],
@@ -259,6 +264,7 @@ export default {
     :rows="filteredRows"
     :group-by="computedGroupBy"
     :search="search"
+    :search-option="searchOption"
     :paging="true"
     :paging-params="pagingParams"
     :paging-label="pagingLabel"

@@ -56,6 +56,7 @@ export const SETTING = {
 
   SYSTEM_GPU_MANAGEMENT_SCHEDULER_NAME: 'system-gpu-management-scheduler-name',
   UI_SESSION_LOGOUT_MINUTES:            'ui-session-logout-minutes',
+  ENABLE_LOAD_RESOURCE_BY_NAMESPACE:    'enable-load-resource-by-namespace',
 };
 
 // These are the settings that are allowed to be edited via the UI

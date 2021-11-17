@@ -123,6 +123,11 @@ export default {
       default: true
     },
 
+    searchOption: {
+      type:    Boolean,
+      default: false
+    },
+
     extraSearchFields: {
       // Additional fields that aren't defined in the headers to search in on each row
       type:    Array,
@@ -516,7 +521,7 @@ export default {
   <div>
     <div :class="{'titled': $slots.title && $slots.title.length}" class="sortable-table-header">
       <slot name="title" />
-      <div v-if="showHeaderRow" class="fixed-header-actions">
+      <div v-if="showHeaderRow" class="fixed-header-actions" :class="{'with-search-option': searchOption}">
         <div class="bulk">
           <slot name="header-left">
             <template v-if="tableActions">
@@ -567,7 +572,9 @@ export default {
         <div v-if="$slots['header-middle'] && $slots['header-middle'].length" class="middle">
           <slot name="header-middle" />
         </div>
-
+        <div v-if="searchOption || ($slots['header-search-option'] && $slots['header-search-option'].length)" class="search-option">
+          <slot name="header-search-option"></slot>
+        </div>
         <div v-if="search || ($slots['header-right'] && $slots['header-right'].length)" class="search">
           <slot name="header-right" />
           <input
@@ -1002,6 +1009,10 @@ $spacing: 10px;
     text-align: right;
   }
 
+  .search-option {
+    grid-area: search-option;
+  }
+
   .external-actions {
     display:inline-block;
 
@@ -1034,6 +1045,10 @@ $spacing: 10px;
       }
     }
   }
+}
+
+.with-search-option {
+  grid-template-columns: [bulk] auto [middle] min-content [search-option] minmax(min-content, 200px) [search] minmax(min-content, 200px);
 }
 
 .paging {
