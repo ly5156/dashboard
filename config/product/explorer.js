@@ -275,7 +275,19 @@ export function init(store) {
     route:            { name: 'c-cluster-product-namespaces' },
     exact:            true,
   });
-
+  // migration start
+  virtualType({
+    label:            'Migration',
+    group:            'cluster',
+    icon:             'globe',
+    namespaced:       false,
+    name:             'migration',
+    weight:           200,
+    route:            { name: 'c-cluster-product-migration' },
+    exact:            true,
+  });
+  basicType(['migration']);
+  // migration end
   // cluster audit-log start
   virtualType({
     showMenuFun(state, getters, rootState, rootGetters) {
