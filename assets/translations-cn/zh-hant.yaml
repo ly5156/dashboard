@@ -151,6 +151,9 @@ advancedSettings:
     kubeconfig-generate-token: 自動爲用戶生成 Kubeconfig Token。
     kubeconfig-token-ttl-minutes: Kubeconfig Token 的自定義最大 TTL（單位：分鐘）。
     ui-consent-banner: 橫幅用於在登錄期間，向用戶展示自定義同意橫幅。
+    custom-notifications: 編輯自定義通知
+    harv-release-download-url: 此設置允許您配置<code>升級版本下載</code>url地址。Harvester將從配置的URL託管的(<code>$URL</code>/<code>$VERSION</code>/version.yaml)文件中獲取ISO URL和校驗和。
+    hide-local-cluster: 隱藏本地群集
   edit:
     changeSetting: "修改設置："
     falseOption: "False"
@@ -811,7 +814,6 @@ changePassword:
     failedDeleteKey: 無法刪除單個 API 密鑰
     failedDeleteKeys: 無法刪除多個 API 密鑰
     failedToChange: 無法修改密碼
-    missmatchedPassword: 前後兩次輸入的密碼不匹配
     strengthError: 密碼強度弱
     mismatchedPassword: 前後兩次輸入的密碼不匹配
   generatePassword:
@@ -1317,15 +1319,15 @@ harvester:
       errorTip:
         middle: 設置
         prefix: 非法的備份目標
-        suffic: "。錯誤信息： "
+        suffix: "。錯誤信息： "
       noSetting:
         middle: '設置'
         prefix: '在創建新備份之前, 必須在'
-        suffic: '中配置備份目標。'
+        suffix: '中配置備份目標。'
       viewSetting:
         middle: 此處
         prefix: 點擊
-        suffic: 查看備份配置。
+        suffix: 查看備份配置。
     restore:
       backup: 備份
       createNew: 創建
@@ -1375,7 +1377,7 @@ harvester:
     size: 大小
     type: 類型
     version: 版本
-    virtaulName: 虛擬機名稱
+    virtualName: 虛擬機名稱
     volume: 卷
     ipv4Address: IPv4 地址
     promiscuous: Promiscuous
@@ -1445,6 +1447,7 @@ harvester:
       instance: 虛擬機
       monitor: 監控數據
       overview: 概述
+    inconsistentIP: '主機IP不一致, 當前IP: { currentIP }, 初始化IP: { initIP }'
   image:
     fileName: 文件名稱
     label: 鏡像
@@ -1519,15 +1522,15 @@ harvester:
       errorTip:
         middle: 設置
         prefix: 非法的物理網卡
-        suffic: "。錯誤信息： "
+        suffix: "。錯誤信息： "
       premise:
         middle: '設置'
         prefix: '你需要先進行網絡'
-        suffic: "然後才能創建新網絡。"
+        suffix: "然後才能創建新網絡。"
       viewSetting:
         middle: 此處
         prefix: 點擊
-        suffic: 查看默認集羣網絡配置。
+        suffix: 查看默認集羣網絡配置。
       vlanInactive: 'VLAN 網絡在 {name} 主機上處於非活動狀態'
     layer3Network:
       cidr:
@@ -1565,7 +1568,7 @@ harvester:
       ca:
         middle: '此處'
         prefix: '點擊'
-        suffic: '添加自定義證書。'
+        suffix: '添加自定義證書。'
     percentTip: 括號內的數值代表所有主機上的網絡接口的分佈比例。如果選擇了一個小於100%的接口，用戶需要手動指定 VLAN 網絡配置失敗的主機上的網絡接口。
     vmForceDeletionPolicy:
       period: 週期
@@ -1576,6 +1579,9 @@ harvester:
         retention: 監控數據保留時間
         retentionSize: 監控數據最大佔用存儲
         scrape: 每次採集數據的間隔時間
+      section:
+        prometheus: Prometheus 配置
+        prometheusNodeExporter: Prometheus 節點資源採集配置
     sslCertificates:
       ca: CA
       privateKey: 私鑰
@@ -1836,6 +1842,8 @@ harvester:
       userTips: 添加的用戶需要存在，否則憑證不會生效。
     efiEnabled: EFI 模式下啓動
     usbTip: 提供絕對指針設備，有助於在 VNC 中獲得一致的鼠標光標位置。
+    runStrategy: 虛擬機運行策略
+    secureBoot: 安全啟動
   virtualizationManagement:
     manage: 管理
   vmTemplate:
@@ -1998,6 +2006,16 @@ hpa:
     max: 最大副本數
     min: 最小副本數
     targetReference: 目標引用
+  objectReference:
+    api:
+      label: 引用的 API 版本
+      placeholder: 例如：apps/v1beta1
+    kind:
+      label: 引用類型
+      placeholder: 例如：Deployment
+    name:
+      label: 引用名稱
+      placeholder: 例如：php-apache
 import:
   defaultNamespace:
     label: 默認命名空間
@@ -2292,6 +2310,7 @@ landing:
   gettingStarted:
     body: 查看快速入門指南。Cluster Manager 用戶可以瞭解 Dashboard UI 的更多新功能。
     title: 快速入門
+  support: 支持
 locale:
   en-us: English
   none: (None)
@@ -2758,6 +2777,7 @@ monitoring:
         placeholder: 例如：./key-file.pfx
       secretsBanner: 部署 Monitoring Chart 時，必須在<<pre class="inline-block m-0 p-0 vertical-middle">alertmanager.alertmanagerSpec.secrets</pre>中引用以下文件路徑。詳情請查看<a href="{docsBase}/monitoring-alerting/" target="_blank" rel="noopener noreferrer nofollow">官方文檔</a>。
       label: SSL
+      addReceiver: 添加接收器
   route:
     fields:
       groupBy: 分組依據
@@ -2765,6 +2785,7 @@ monitoring:
       groupWait: 組等待時長
       receiver: 接收者
       repeatInterval: 重複間隔
+      label: 路由
   thanos:
     title: 配置 Thanos
     sidecar:
@@ -2777,11 +2798,53 @@ monitoring:
     thanos: Thanos
     grafana: Grafana
     prometheus: Prometheus
+    projectMetrics: 項目報告
   v1Warning: '當前監控由 Cluster Manager 部署。如果你需要從啓用了監控的舊版 {vendor} 遷移，請先從 Cluster Manager 關閉監控，再使用集羣瀏覽器安裝新版 {vendor} Monitoring Chart。'
   volume:
     modes:
       block: 塊
       file: 文件系統
+  alertmanagerConfig:
+    auth:
+      basicAuthPassword: Secret with Basic Auth Password
+      basicAuthUsername: Secret with Basic Auth Username
+      bearerTokenSecret: Bearer Token Secret
+    deprecationWarning: 路由和接收器資源已棄用。我們建議在AlertmanagerConfigs中配置警報。
+    description: 項目警報和集群警報的路由和接收器在AlertmanagerConfig資源中配置。
+    disabledReceiverButton: 接收器表單需要在創建AlertmanagerConfig後才可用
+    email:
+      password: Secret with Auth Password
+      username: Auth Username
+    empty: 尚未為任何可訪問的命名空間配置警報。
+    getStarted: 通過單擊創建來配置警報。
+    opsgenie:
+      apiKey: Secret with API Key
+    pagerDuty:
+      routingKey: Secret with Routing Key
+      serviceKey: Secret with Service Key
+    receiverFormNames:
+      create: 在AlertmanagerConfig中創建接收器
+      detail: AlertManager配置中的接收器
+      edit: 在AlertmanagerConfig中編輯接收器
+      editYaml: 編輯AlertmanagerConfig
+    receiverTooltip: 此路由將警報定向到選定的接收器，必須在同一個告警配置中定義。
+    routeInfo: 此表單支持配置一條將流量定向到接收器的路由。通過在YAML中配置子路由，可以將警報定向到更多接收器。
+    slack:
+      apiUrl: Secret with Slack Webhook URL
+    webhook:
+      url: URL
+      urlSecret: URL Secret
+      urlSecretTooltip: URL Secret優先於URL，應該定義URL Secret和URL中的一個。
+  projectMonitoring:
+    detail:
+      error: '無法獲取儀錶盤的狀態: '
+    list:
+      banner: 項目監控配置存儲在ProjectChart資源中
+      empty:
+        canCreate: 單擊創建向項目添加監控
+        cannotCreate: 聯繫管理員添加項目監控
+        message: 尚未為任何項目配置項目監視
+  projectMonitors: 項目監控
   hostNetwork:
     label: 爲 Prometheus Operator 使用主機網絡
     tip: 如果你的託管 Kubernetes 集羣使用自定義 CNI（例如 Calico），此選項必須啓用，以允許託管 Controller Plane 與 Prometheus Operator 暴露的准入 Webhook 通信，以更改或驗證傳入的 PrometheusRule。
@@ -2880,7 +2943,11 @@ monitoringRoute:
     info: 根路由必須匹配所有內容，因此無法配置匹配。
     label: 匹配
   receiver:
-    label: 接收者
+    label: 接收器
+    add: 添加接收器
+    addMatch: 添加匹配項
+    oneOrMoreLabel: 一個或多個接收器
+    type: 接收器類型
   regex:
     label: 匹配正則表達式
   repeatInterval:
@@ -3782,6 +3849,8 @@ resourceDetail:
     ownerReferences: "{count, plural,\n=1 {所有者}\nother {所有者}}"
     showAnnotations: "{annotations, plural,\n=1 {顯示1個註釋}\nother {顯示{annotations}個註釋}}"
     showLabels: 顯示所有標籤
+    endpoints: Endpoints
+    namespaces: 命名空间
   header:
     clone: "從 {subtype} {name} 克隆"
     create: 創建 {subtype}
@@ -3807,6 +3876,7 @@ resourceDetail:
     workspace: 工作空間
     age: 存活時間
     yaml: YAML
+    restartCount: Pod重新啟動
 resourceList:
   head:
     create: 創建
@@ -4597,6 +4667,12 @@ tableHeaders:
   restart: 要求重啓
   routeConnectivity: 路由連接
   size: 大小
+  podRestarts: 重啟
+  project: 項目
+  receiverTypes: 接收器類型
+  receivers: 接收器
+  registrationNamespace: 註冊命名空間
+  routes: 路由
 target:
   router:
     label: 路由
@@ -4857,6 +4933,11 @@ typeLabel:
     {count, plural,
       one { 工作負載 }
       other { 工作負載 }
+    }
+  harvesterhci.io.networkattachmentdefinition: |-
+    {count, plural,
+      one { 網絡 }
+      other { 網絡 }
     }
 unit:
   day: "{count, plural,\n  one { 天 }\n  other { 天 }\n}"
@@ -5619,6 +5700,7 @@ project:
     current: '{value} (Current)'
   resourceQuotas: 資源限額
   vmDefaultResourceLimit: 虛擬機默認資源限制
+  membersEditOnly: 只能應用等於或低於當前用戶權限的權限
 projectMembers:
   project:
     label: 項目
@@ -5664,6 +5746,7 @@ projectNamespaces:
   createProject: 創建項目
   label: 項目/命名空間
   noNamespaces: 沒有定義的命名空間。
+  noProjectNoNamespaces: 所有命名空間都在一個項目中
 registryConfig:
   addLabel: 添加鏡像倉庫
   header: 倉庫驗證
@@ -7319,3 +7402,29 @@ clusterConnectMode:
     label: 測試
     success: 測試成功
   title: 集羣連接模式
+addonConfigConfirmation:
+  body: 更改Kubernetes版本可以重置附加配置值。在繼續之前，您應該檢查這些值是否符合預期。
+  title: 附加配置重置
+alertmanagerConfigReceiver:
+  addButton: 添加接收器
+  name: 接收器名稱
+  namespaceWarning: 無法呈現密鑰選擇器，因為找不到可從中獲取密鑰的命名空間。
+  receiverTypes: “可以編輯以下接收器類型：電子郵件、Slack、PagerDuty、Opsgenie和Webhook。對於其他接收器類型，請編輯AlertmanagerConfig YAML
+  receivers: 接收器
+  secretKeyId: 密鑰
+  slack:
+    apiUrlTooltip: 包含Slack webhook URL的密鑰。密鑰需要與AlertmanagerConfig對象位於同一名稱空間中，並可由Prometheus運算符訪問。
+    webhookUrl: Webhook URL
+notifications:
+  header: 自定義通知
+  loginError:
+    header: 登錄失敗
+    messageLabel: 要顯示的文本
+    showCheckboxLabel: 顯示自定義登錄錯誤
+  menuLabel: 自定義通知
+serviceAccount:
+  automount: 自動識別服務帳戶 Token
+  imagePullSecrets: 拉取密文
+  tabs:
+    serviceAccount:
+      label: 服務帳戶
