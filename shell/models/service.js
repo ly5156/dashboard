@@ -33,6 +33,12 @@ export const DEFAULT_SERVICE_TYPES = [
     description: 'servicesPage.serviceTypes.nodePort.description',
     bannerAbbrv: 'servicesPage.serviceTypes.nodePort.abbrv',
   },
+  {
+    id:          'ExternalIP',
+    label:       'servicesPage.serviceTypes.externalIp.label',
+    description: 'servicesPage.serviceTypes.externalIp.description',
+    bannerAbbrv: 'servicesPage.serviceTypes.externalIp.abbrv',
+  },
 ];
 
 export const HEADLESS = (() => {

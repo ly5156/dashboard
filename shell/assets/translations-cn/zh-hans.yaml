@@ -182,7 +182,7 @@ nav:
     projects: 镜像管理
   auditLog: 审计日志
   quotas: 配额
-  globalMonitoring: 
+  globalMonitoring:
     label: 全局监控
     dashboard: Dashboard
 product:
@@ -4484,6 +4484,7 @@ serviceTypes:
   headless: Headless
   loadbalancer: Load Balancer
   nodeport: Node Port
+  externalip: 外部 IP 地址
 servicesPage:
   anyNode: 任何节点
   labelsAnnotations:
@@ -4556,6 +4557,10 @@ servicesPage:
       abbrv: NP
       description: "在每个节点的 IP 上以静态端口（`NodePort`）公开服务。你可以通过请求`&lt;NodeIP&gt;:&lt;NodePort&gt;`从集群外部联系这种类型的服务。"
       label: Node Port
+    externalIp:
+      abbrv: EIP
+      description: Exposes the service on one or more external IP addresses
+      label: External IP Address
   typeOpts:
     label: 服务类型
   harvester:
@@ -7168,13 +7173,13 @@ formReservation:
     label: '{component} Memory 预留'
     placeholder: '例如: 1000'
 globalMonitoringDashboard:
-  globalMonitoring: 
+  globalMonitoring:
     label: 全局监控
     description: 多集群监控
-  grafana: 
+  grafana:
     label: Grafana
     description: Metrics 仪表盘
-  thanos: 
+  thanos:
     label: Prometheus Thanos
     description: 集群组件系统
 globalMonitoringPage:
@@ -7182,10 +7187,10 @@ globalMonitoringPage:
   cluster: 全局监控所在集群
   token:
     label: 使用默认 token
-    custom: 
+    custom:
       label: 自定义 token
       placeholder: 请配置自定义 token
-  customAddress: 
+  customAddress:
     add: 添加地址
     otherHeader: 自定义其他地址
     header: 自定义地址
@@ -7198,7 +7203,7 @@ globalMonitoringPage:
   customAnswers:
     title: 自定义应答
     detail: 配置自定义的应答。
-    answer: 
+    answer:
       label: 应答
     addAnswerLabel: 添加应答
   noAvailableClusters: 没有可用集群，请先添加一个集群。
@@ -7327,19 +7332,19 @@ globalMonitoringPage:
   grafana:
     header: 监控大屏
     detail: 全局 Grafana 和{appName}监控大屏的配置。
-    title: 
+    title:
       label: 标题
       placeholder: 例如 grafana
-    tabTitle: 
+    tabTitle:
       label: 选项卡标题
       placeholder: 例如 grafana
-    logo: 
+    logo:
       label: logo
       placeholder: 请输入 logo 地址
-    favicon: 
+    favicon:
       label: favicon
       placeholder: 请输入 favicon 地址
-    serverUrl: 
+    serverUrl:
       label: serverUrl
       placeholder: 例如 http://rancher.cattle-system
     enablePersistence:
@@ -7360,7 +7365,7 @@ globalMonitoringPage:
     loadBalancer: 4 层负载均衡
   tls:
     header: 证书
-    serverName: 
+    serverName:
       label: Server Name
     ca:
       label: CA 证书

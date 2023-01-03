@@ -471,7 +471,7 @@ export default {
         />
       </Tab>
       <Tab
-        v-if="!checkTypeIs('ExternalName') && !checkTypeIs('Headless')"
+        v-if="!checkTypeIs('ExternalName') && !checkTypeIs('Headless') && !checkTypeIs('ExternalIP')"
         name="session-affinity"
         :label="t('servicesPage.affinity.label')"
         :tooltip="t('servicesPage.affinity.helpText')"
