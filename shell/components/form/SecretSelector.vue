@@ -55,6 +55,10 @@ export default {
     mode: {
       type:    String,
       default: _EDIT
+    },
+    inStore: {
+      type:    String,
+      default: 'cluster',
     }
   },
 
@@ -85,10 +89,11 @@ export default {
         this.$emit('input', { [this.mountKey]: { secretKeyRef: { [this.nameKey]: this.name, [this.keyKey]: key } } });
       }
     },
+    allSecrets() {
+      return this.$store.getters[`${ this.inStore }/all`](SECRET);
+    },
     secrets() {
-      const allSecrets = this.$store.getters['cluster/all'](SECRET);
-
-      return allSecrets
+      return this.allSecrets
         .filter(secret => this.types.includes(secret._type) && secret.namespace === this.namespace);
     },
     secretNames() {
