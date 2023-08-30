@@ -1,0 +1,52 @@
+appMigration:
+  title: 应用迁移
+  tasks:
+    tableHeaders: 
+      targetCluster: 目标集群
+      targetProject: 目标项目
+      namespace: 命名空间
+      resources: 关联资源
+  createAppMigrationTaskPage:
+    target: 选择克隆目标
+    workload: 选择工作负载
+    resources: 选择关联资源
+    service: 配置服务发现
+    storage: 配置存储
+    task: 克隆任务配置
+    form:
+      task: 任务名称
+      targetConfig:
+        cluster: 目标集群
+        project: 目标项目
+        namespace: 目标命名空间
+      workloadConfig:
+        workload: 工作负载
+        namespace: 待克隆的工作负载所在的命名空间
+        project: 待克隆的工作负载所在的项目
+      relatedResourcesConfig:
+        secret: 密文
+        configMap: 配置映射
+      serviceConfig:
+        title: Services
+      storageConfig:
+        title: PVCs
+      taskConfig:
+        encryptedOption:
+          title: 加密
+          unencrypted: 存储未加密的备份内容
+          encrypted: 使用加密配置密钥（推荐）对备份进行加密
+        storageLocation:
+          title: 存储位置
+          default: 使用安装时配置的默认存储位置
+          s3: 使用兼容 S3 的对象存储作为存储位置
+          skipTLS: 跳过 TLS 认证
+        replacePolicy:
+          title: 覆盖策略
+          validation:  同名资源校验
+          replace: 同名资源强制覆盖
+      errors:
+        required: "{name} 不能为空"
+        nonExistent: "{name} 值不存在"
+        duplicateContainerName: '工作负载 {workload} 中已经存在名为 {name} 的 sidecar。'
+        storageClassNotExist: 数据卷中新增PVC（{pvcName}）所引用的StorageClass，在目标集群中不存在，请点击编辑并修改
+        pvNotExist: 数据卷中新增PVC（{pvcName}）所引用的持久卷, 在目标集群中不存在，请点击编辑并修改

@@ -1,0 +1,52 @@
+appMigration:
+  title: Migration
+  tasks:
+    tableHeaders: 
+      targetCluster: Target Cluster
+      targetProject: Target Project
+      namespace: Namespace
+      resources: Resources
+  createAppMigrationTaskPage:
+    target: Cloning Target
+    workload: Workload
+    resources: Associated Resources
+    service: Service Discovery
+    storage: Storage
+    task: Cloning Tasks
+    form:
+      task: Task Name
+      targetConfig:
+        cluster: Target Cluster
+        project: Target Project
+        namespace: Target Namespace
+      workloadConfig:
+        workload: Workload
+        namespace: Namespace where the workload to be cloned resides
+        project: Project where the workload to be cloned resides
+      relatedResourcesConfig:
+        secret: Secret
+        configMap: Config Map
+      serviceConfig:
+        title: Services
+      storageConfig:
+        title: PVCs
+      taskConfig:
+        encryptedOption:
+          title: Encrypted
+          unencrypted: Store unencrypted backup content
+          encrypted: Encrypting backups with an encryption configuration key (recommended)
+        storageLocation:
+          title: Storage Location
+          default: Use the default storage location configured during installation 
+          s3: Using S3-compatible object storage as a storage location
+          skipTLS: Skip TLS Authentication
+        replacePolicy:
+          title: Replace Policy
+          validation: Homonymous resource validation
+          replace: Mandatory coverage of resources of the same name
+      errors:
+        required: "{name} is required"
+        nonExistent: "{name} value does not exist"
+        duplicateContainerName: 'There is already a sidecar named "{name}" in the workload "{workload}"'
+        storageClassNotExist: The StorageClass referenced by the newly added PVC ({pvcName}) in the data volume does not exist in the target cluster, please click edit and modify
+        pvNotExist: he persistent volume referenced by the newly added PVC ({pvcName}) in the data volume does not exist in the target cluster, please click edit and modify
