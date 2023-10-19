@@ -288,20 +288,20 @@ export default {
         :label="t('prefs.advFeatures.viewInApi', {}, true)"
         class="mt-10"
       />
-      <br>
+      <!-- <br>
       <Checkbox
         v-model="allNamespaces"
         data-testid="prefs__allNamespaces"
         :label="t('prefs.advFeatures.allNamespaces', {}, true)"
         class="mt-20"
-      />
-      <br>
+      /> -->
+      <!-- <br>
       <Checkbox
         v-model="themeShortcut"
         data-testid="prefs__themeShortcut"
         :label="t('prefs.advFeatures.themeShortcut', {}, true)"
         class="mt-20"
-      />
+      /> -->
       <br>
       <Checkbox
         v-if="!isSingleProduct"
