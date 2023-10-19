@@ -59,7 +59,7 @@ export function calculatePosition(dropdownList, component, width, placement) {
     selectEl.classList.remove('vs__dropdown-up');
   }
 
-  dropdownList.style.left = `${ r.x }px`;
+  dropdownList.style.left = `${ r.x + 10 }px`;
   dropdownList.style.width = 'min-content';
-  dropdownList.style.minWidth = `${ r.width }px`;
+  dropdownList.style.minWidth = `${ r.width - 20 }px`;
 }

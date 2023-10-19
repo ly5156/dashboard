@@ -21,8 +21,8 @@ TEXTAREA,
   width: 100%;
   padding: $input-padding-sm;
   background-color: var(--input-bg);
-  border-radius: var(--border-radius);
-  border: solid var(--border-width) var(--input-border);
+  // border-radius: var(--border-radius);
+  // border: solid var(--border-width) var(--input-border);
   color: var(--input-text);
 
   @include input-status-color;

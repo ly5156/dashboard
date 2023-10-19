@@ -206,7 +206,7 @@ $transition-duration: 150ms;
   width: 0;
   max-width: 100%;
   flex-grow: 1;
-  margin-left: $input-padding-sm;
+  // margin-left: $input-padding-sm;
 }
 
 .vs__search::placeholder {
@@ -248,7 +248,7 @@ $transition-duration: 150ms;
   border: 1px solid var(--primary);
   border-radius: 3px;
   color: var(--link);
-  margin-left: $input-padding-sm;
+  // margin-left: $input-padding-sm;
 
   &:not(:last-of-type) {
     margin-right: 2px;
@@ -296,7 +296,7 @@ $transition-duration: 150ms;
         opacity: 0.4;
       }
       .vs__search {
-        margin-left: $input-padding-sm;
+        // margin-left: $input-padding-sm;
       }
     }
     .vs__selected {

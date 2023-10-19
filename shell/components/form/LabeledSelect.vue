@@ -383,7 +383,7 @@ export default {
     // Make LabeledSelect and LabeledInput the same height so they
     // don't wiggle when you toggle between them.
     padding: 7px 0 0 $input-padding-sm;
-    padding: $input-padding-sm 0 0 $input-padding-sm;
+    padding: calc($input-padding-sm - 2px) 0 2px $input-padding-sm;
 
     label {
       margin: 0;
@@ -465,7 +465,7 @@ export default {
   ::v-deep .vs__actions {
     &:after {
       position: relative;
-      top: -10px;
+      // top: -10px;
     }
   }
 
