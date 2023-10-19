@@ -188,7 +188,7 @@ export default {
       </div>
     </div>
     <!-- Theme -->
-    <div class="mt-10 mb-10">
+    <!-- <div class="mt-10 mb-10">
       <hr>
       <h4 v-t="'prefs.theme.label'" />
       <ButtonGroup
@@ -203,7 +203,7 @@ export default {
           :am="am"
         />
       </div>
-    </div>
+    </div> -->
     <!-- Login landing page -->
     <div
       v-if="!isSingleProduct"

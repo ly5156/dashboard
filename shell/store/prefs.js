@@ -184,31 +184,32 @@ export const getters = {
   },
 
   theme: (state, getters, rootState, rootGetters) => {
-    const setting = rootGetters['management/byId'](MANAGEMENT.SETTING, SETTING.THEME);
+    // const setting = rootGetters['management/byId'](MANAGEMENT.SETTING, SETTING.THEME);
 
-    if (setting?.value) {
-      return setting?.value;
-    }
+    // if (setting?.value) {
+    //   return setting?.value;
+    // }
 
-    let theme = getters['get'](THEME);
-    const pcs = getters['get'](PREFERS_SCHEME);
+    // let theme = getters['get'](THEME);
+    // const pcs = getters['get'](PREFERS_SCHEME);
 
-    // console.log('Get Theme', theme, pcs);
+    // // console.log('Get Theme', theme, pcs);
 
-    // Ember UI uses this prefix
-    if ( theme.startsWith('ui-') ) {
-      theme = theme.substr(3);
-    }
+    // // Ember UI uses this prefix
+    // if ( theme.startsWith('ui-') ) {
+    //   theme = theme.substr(3);
+    // }
 
-    if ( theme === 'auto' ) {
-      if ( pcs === 'light' || pcs === 'dark' ) {
-        return pcs;
-      }
+    // if ( theme === 'auto' ) {
+    //   if ( pcs === 'light' || pcs === 'dark' ) {
+    //     return pcs;
+    //   }
 
-      return 'dark';
-    }
+    //   return 'dark';
+    // }
 
-    return theme;
+    // return theme;
+    return 'light';
   },
 
   afterLoginRoute: (state, getters) => {
