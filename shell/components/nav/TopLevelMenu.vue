@@ -515,7 +515,7 @@ export default {
     .rancher-provider-icon {
       .rancher-icon-fill {
         // Should match .option color
-        fill: var(--link);
+        fill: var(--menu-item);
       }
     }
   }
@@ -546,7 +546,7 @@ export default {
     align-items: center;
     cursor: pointer;
     display: flex;
-    color: var(--link);
+    color: var(--menu-item);
 
     &:hover {
       text-decoration: none;
@@ -566,14 +566,14 @@ export default {
     }
     svg {
       margin-right: 8px;
-      fill: var(--link);
+      fill: var(--menu-item);;
     }
     img {
       margin-right: 8px;
     }
 
     > div {
-      color: var(--link);
+      color: var(--menu-item);
     }
 
     &:hover {
@@ -613,7 +613,7 @@ export default {
     .menu-icon {
       width: 24px;
       height: 24px;
-      fill: var(--header-btn-text);
+      fill: var(--menu-title);
     }
     &.raised {
       z-index: 200;
@@ -659,6 +659,8 @@ export default {
       .menu-spacer {
         width: 55px;
       }
+
+      background-color: var(--menu-title-bg);
     }
     .body {
       flex: 1;
@@ -672,10 +674,11 @@ export default {
         text-transform: uppercase;
         opacity: 0.8;
         margin-top: 10px;
+        color: var(--menu-category);
       }
 
       .home {
-        color: var(--link);
+        color: var(--menu-item);
       }
 
       .home:focus {

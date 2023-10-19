@@ -165,7 +165,7 @@ export default {
     if (brandMeta?.hasStylesheet === 'true') {
       cssClass = `${ cssClass } ${ this.brand } theme-${ this.theme }`;
     } else {
-      cssClass = `theme-${ this.theme } overflow-hidden dashboard-body`;
+      cssClass = `custom theme-${ this.theme } overflow-hidden dashboard-body`;
       this.$store.dispatch('prefs/setBrandStyle', this.theme === 'dark');
     }
 
