@@ -121,7 +121,7 @@ export default {
         {{ t('workload.serviceAccountName.label') }}
       </h3>
     </div>
-    <div class="row span-6">
+    <div class="row span-6 items-end">
       <LabeledSelect
         v-model="selected"
         :label="selectLabel"
@@ -144,7 +144,7 @@ export default {
       <button
         v-if="!isView"
         type="button"
-        class="btn role-secondary"
+        class="btn role-secondary h-fit"
         data-testid="clear-search"
         @click="clearSearch($event)"
       >
@@ -161,3 +161,11 @@ export default {
     </template>
   </div>
 </template>
+<style scoped>
+.items-end {
+  align-items: flex-end;
+}
+.h-fit {
+  height: fit-content;
+}
+</style>
