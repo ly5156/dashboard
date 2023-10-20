@@ -32,9 +32,11 @@ export default {
   computed: {
 
     brand() {
-      const setting = findBy(this.globalSettings, 'id', SETTING.BRAND);
+      // const setting = findBy(this.globalSettings, 'id', SETTING.BRAND);
 
-      return setting?.value;
+      // return setting?.value;
+
+      return 'custom';
     },
 
     color() {
@@ -165,7 +167,7 @@ export default {
     if (brandMeta?.hasStylesheet === 'true') {
       cssClass = `${ cssClass } ${ this.brand } theme-${ this.theme }`;
     } else {
-      cssClass = `custom theme-${ this.theme } overflow-hidden dashboard-body`;
+      cssClass = `theme-${ this.theme } overflow-hidden dashboard-body`;
       this.$store.dispatch('prefs/setBrandStyle', this.theme === 'dark');
     }
 

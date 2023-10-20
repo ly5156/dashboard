@@ -33,7 +33,7 @@ export default {
       {{ cluster.badge.iconText }}
     </div>
     <!-- eslint-disable -->
-    <svg v-else-if="cluster.isLocal && !cluster.isHarvester" class="cluster-local-logo" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+    <!-- <svg v-else-if="cluster.isLocal && !cluster.isHarvester" class="cluster-local-logo" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
       <g>
         <g>
           <path class="rancher-icon-fill" d="M26.0862026,44.4953918H8.6165142c-5.5818157,0-9.3979139-4.6252708-8.4802637-10.1311035l2.858391-17.210701
@@ -50,7 +50,8 @@ export default {
             V44.4953918z"/>
         </g>
       </g>
-    </svg>
+    </svg> -->
+    <svg  v-else-if="cluster.isLocal && !cluster.isHarvester" class="cluster-local-logo" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="20995" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32"><path d="M899.6 90.6H124.4c-32.9 0-59.6 26.7-59.6 59.6v89.5c0 32.9 26.7 59.6 59.6 59.6h775.3c32.9 0 59.6-26.7 59.6-59.6v-89.5c0-32.9-26.7-59.6-59.7-59.6zM197.4 239.7c-24.7 0-44.7-20-44.7-44.7s20-44.7 44.7-44.7 44.7 20 44.7 44.7-20 44.7-44.7 44.7zM899.6 407.6H124.4c-32.9 0-59.6 26.7-59.6 59.6v89.5c0 32.9 26.7 59.6 59.6 59.6h775.3c32.9 0 59.6-26.7 59.6-59.6v-89.5c0-32.9-26.7-59.6-59.7-59.6zM197.4 556.7c-24.7 0-44.7-20-44.7-44.7 0-24.7 20-44.7 44.7-44.7s44.7 20 44.7 44.7c0.1 24.7-20 44.7-44.7 44.7zM899.6 724.7H124.4c-32.9 0-59.6 26.7-59.6 59.6v89.5c0 32.9 26.7 59.6 59.6 59.6h775.3c32.9 0 59.6-26.7 59.6-59.6v-89.5c0-32.9-26.7-59.6-59.7-59.6zM197.4 873.8c-24.7 0-44.7-20-44.7-44.7 0-24.7 20-44.7 44.7-44.7s44.7 20 44.7 44.7c0.1 24.7-20 44.7-44.7 44.7z" class="rancher-icon-fill"></path></svg>
     <!-- eslint-enable -->
     <img
       v-else-if="cluster.providerNavLogo"

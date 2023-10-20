@@ -1,5 +1,5 @@
-import { SETTING } from '@shell/config/settings';
-import { MANAGEMENT } from '@shell/config/types';
+// import { SETTING } from '@shell/config/settings';
+// import { MANAGEMENT } from '@shell/config/types';
 
 let favIconSet = false;
 
@@ -9,29 +9,30 @@ export function haveSetFavIcon() {
 
 export function setFavIcon(store) {
   const app = store.app;
-  const res = store.getters['management/byId'](MANAGEMENT.SETTING, SETTING.FAVICON);
-  const brandSetting = store.getters['management/byId'](MANAGEMENT.SETTING, SETTING.BRAND);
+  // const res = store.getters['management/byId'](MANAGEMENT.SETTING, SETTING.FAVICON);
+  // const brandSetting = store.getters['management/byId'](MANAGEMENT.SETTING, SETTING.BRAND);
   const link = findIconLink(app.head.link);
 
   if (link) {
-    let brandImage;
+    // let brandImage;
 
-    if (brandSetting?.value === 'suse') {
-      brandImage = require('~shell/assets/brand/suse/favicon.png');
-    } else if (brandSetting?.value === 'csp') {
-      brandImage = require('~shell/assets/brand/csp/favicon.png');
-    }
+    // if (brandSetting?.value === 'suse') {
+    //   brandImage = require('~shell/assets/brand/suse/favicon.png');
+    // } else if (brandSetting?.value === 'csp') {
+    //   brandImage = require('~shell/assets/brand/csp/favicon.png');
+    // }
 
-    link.href = res?.value || brandImage || defaultFavIcon;
+    // link.href = res?.value || brandImage || defaultFavIcon;
+    link.href = require('~shell/assets/brand/custom/favicon.png');
     favIconSet = true;
   }
 }
 
-function getCurrentFavIcon() {
-  const link = findIconLink(document.head.getElementsByTagName('link'));
+// function getCurrentFavIcon() {
+//   const link = findIconLink(document.head.getElementsByTagName('link'));
 
-  return link ? link.href : '';
-}
+//   return link ? link.href : '';
+// }
 
 function findIconLink(links) {
   for (let i = 0; i < links.length; i++) {
@@ -45,4 +46,4 @@ function findIconLink(links) {
   return undefined;
 }
 
-const defaultFavIcon = getCurrentFavIcon();
+// const defaultFavIcon = getCurrentFavIcon();

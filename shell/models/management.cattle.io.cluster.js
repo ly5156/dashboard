@@ -9,7 +9,7 @@ import jsyaml from 'js-yaml';
 import { eachLimit } from '@shell/utils/promise';
 import { addParams } from '@shell/utils/url';
 import { isEmpty } from '@shell/utils/object';
-import { HARVESTER_NAME as HARVESTER } from '@shell/config/features';
+// import { HARVESTER_NAME as HARVESTER } from '@shell/config/features';
 import { isHarvesterCluster } from '@shell/utils/cluster';
 import HybridModel from '@shell/plugins/steve/hybrid-class';
 import { LINUX, WINDOWS } from '@shell/store/catalog';
@@ -17,7 +17,7 @@ import { KONTAINER_TO_DRIVER } from './management.cattle.io.kontainerdriver';
 
 // See translation file cluster.providers for list of providers
 // If the logo is not named with the provider name, add an override here
-const PROVIDER_LOGO_OVERRIDE = {};
+// const PROVIDER_LOGO_OVERRIDE = {};
 
 export default class MgmtCluster extends HybridModel {
   get details() {
@@ -254,27 +254,29 @@ export default class MgmtCluster extends HybridModel {
   }
 
   get providerLogo() {
-    let provider = this.status?.provider || 'kubernetes';
+    // let provider = this.status?.provider || 'kubernetes';
 
-    if (this.isHarvester) {
-      provider = HARVESTER;
-    }
-    // Only interested in the part before the period
-    const prv = provider.split('.')[0];
-    // Allow overrides if needed
-    const logo = PROVIDER_LOGO_OVERRIDE[prv] || prv;
+    // if (this.isHarvester) {
+    //   provider = HARVESTER;
+    // }
+    // // Only interested in the part before the period
+    // const prv = provider.split('.')[0];
+    // // Allow overrides if needed
+    // const logo = PROVIDER_LOGO_OVERRIDE[prv] || prv;
 
-    let icon;
+    // let icon;
 
-    try {
-      icon = require(`~shell/assets/images/providers/${ prv }.svg`);
-    } catch (e) {
-      console.warn(`Can not find provider logo for provider ${ logo }`); // eslint-disable-line no-console
-      // Use fallback generic Kubernetes icon
-      icon = require(`~shell/assets/images/providers/kubernetes.svg`);
-    }
+    // try {
+    //   icon = require(`~shell/assets/images/providers/${ prv }.svg`);
+    // } catch (e) {
+    //   console.warn(`Can not find provider logo for provider ${ logo }`); // eslint-disable-line no-console
+    //   // Use fallback generic Kubernetes icon
+    //   icon = require(`~shell/assets/images/providers/kubernetes.svg`);
+    // }
 
-    return icon;
+    // return icon;
+
+    return require(`~shell/assets/images/providers/custom-cluster.svg`);
   }
 
   get providerMenuLogo() {

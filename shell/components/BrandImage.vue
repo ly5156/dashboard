@@ -21,9 +21,10 @@ export default {
     ...mapGetters({ theme: 'prefs/theme' }),
 
     brand() {
-      const setting = this.managementSettings.filter(setting => setting.id === SETTING.BRAND)[0] || {};
+      // const setting = this.managementSettings.filter(setting => setting.id === SETTING.BRAND)[0] || {};
 
-      return setting.value;
+      // return setting.value;
+      return 'custom';
     },
 
     uiLogoLight() {

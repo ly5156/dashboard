@@ -272,7 +272,7 @@ export default {
         <div class="title">
           <div class="menu-spacer" />
           <div class="side-menu-logo">
-            <BrandImage file-name="rancher-logo.svg" />
+            <BrandImage file-name="custom-logo.svg" />
           </div>
         </div>
         <div class="body">
