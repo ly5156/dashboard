@@ -273,6 +273,7 @@ export default {
           <div class="menu-spacer" />
           <div class="side-menu-logo">
             <BrandImage file-name="custom-logo.svg" />
+            <BrandImage file-name="custom-logo.jpg" />
           </div>
         </div>
         <div class="body">

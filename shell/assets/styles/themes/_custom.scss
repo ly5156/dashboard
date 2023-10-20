@@ -1,5 +1,5 @@
 .custom {
-  $primary: hsl(225, 100%, 57%);
+  $primary: #3982CF;
   $info:  mix($primary, $secondary, 50%);
   $selected: rgba($primary, .5);
 
@@ -23,10 +23,10 @@
   --info-banner-bg          : #{rgba($info, 0.15)};
   --info-light-bg           : #{rgba($info, 0.05)};
 
-  --menu-title-bg: #1a2226;
-  --menu-title: #324248;
-  --topmenu-bg: #242e32;
-  --menu-item: #859899;
-  --menu-category: #cacac6;
+  --menu-title-bg: #fff;
+  --menu-title: var(--primary);
+  --topmenu-bg: #fff;
+  --menu-item: var(--primary);
+  --menu-category: var(--primary);
 
 }

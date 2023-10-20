@@ -1,4 +1,4 @@
-import { SETTING } from './settings';
+// import { SETTING } from './settings';
 
 export const ANY = 0;
 export const STANDARD = 1;
@@ -7,13 +7,13 @@ export const DOCS_BASE = 'https://rancher.com/docs/rancher/v2.7/en';
 
 const STANDARD_VENDOR = 'Rancher';
 const STANDARD_PRODUCT = 'Explorer';
-const CUSTOM_VENDOR = {
-  suse: 'Rancher Prime',
-  csp:  'SUSE Rancher'
-};
+// const CUSTOM_VENDOR = {
+//   suse: 'Rancher Prime',
+//   csp:  'SUSE Rancher'
+// };
 
 let mode = STANDARD;
-let vendor = STANDARD_VENDOR;
+let vendor = STANDARD_VENDOR; // eslint-disable-line no-unused-vars
 let product = STANDARD_PRODUCT;
 let brand = null;
 
@@ -56,16 +56,17 @@ export function matches(pl) {
 }
 
 export function getVendor() {
-  if ( vendor === SETTING.PL_RANCHER_VALUE ) {
-    // Custom vendor override based on brand
-    if (brand && CUSTOM_VENDOR[brand]) {
-      return CUSTOM_VENDOR[brand];
-    }
+  // if ( vendor === SETTING.PL_RANCHER_VALUE ) {
+  //   // Custom vendor override based on brand
+  //   if (brand && CUSTOM_VENDOR[brand]) {
+  //     return CUSTOM_VENDOR[brand];
+  //   }
 
-    return STANDARD_VENDOR;
-  }
+  //   return STANDARD_VENDOR;
+  // }
 
-  return vendor;
+  // return vendor;
+  return '云管平台';
 }
 
 export function getProduct() {

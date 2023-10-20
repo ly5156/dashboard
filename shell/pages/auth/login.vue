@@ -295,9 +295,9 @@ export default {
   <main class="main-layout login">
     <div class="row gutless mb-20">
       <div class="col span-6 p-20">
-        <p class="text-center">
+        <!-- <p class="text-center">
           {{ t('login.howdy') }}
-        </p>
+        </p> -->
         <h1 class="text-center login-welcome">
           {{ t('login.welcome', {vendor}) }}
         </h1>
@@ -503,7 +503,8 @@ export default {
     }
 
     .login-welcome {
-      margin: 0
+      margin: 0;
+      color: var(--primary);
     }
 
     .login-messages {

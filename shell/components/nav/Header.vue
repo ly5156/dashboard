@@ -18,6 +18,7 @@ import { allHash } from '@shell/utils/promise';
 import { ActionLocation, ExtensionPoint } from '@shell/core/types';
 import { getApplicableExtensionEnhancements } from '@shell/core/plugin-helpers';
 import IconOrSvg from '@shell/components/IconOrSvg';
+import customLogo from '@shell/assets/brand/custom/custom-logo.jpg';
 
 const PAGE_HEADER_ACTION = 'page-action';
 
@@ -55,7 +56,8 @@ export default {
       LOGGED_OUT,
       navHeaderRight:         null,
       extensionHeaderActions: getApplicableExtensionEnhancements(this, ExtensionPoint.ACTION, ActionLocation.HEADER, this.$route),
-      ctx:                    this
+      ctx:                    this,
+      customLogo
     };
   },
 
@@ -347,9 +349,13 @@ export default {
         v-if="isSingleProduct && !isRancherInHarvester"
         :to="singleProductLogoRoute"
       >
-        <img
+        <!-- <img
           class="side-menu-logo"
           :src="isSingleProduct.logo"
+        > -->
+        <img
+          class="side-menu-logo"
+          :src="customLogo"
         >
       </n-link>
     </div>
@@ -393,7 +399,11 @@ export default {
           >
             <BrandImage
               class="side-menu-logo-img"
-              file-name="rancher-logo.svg"
+              file-name="custom-logo.svg"
+            />
+            <BrandImage
+              class="side-menu-logo-img"
+              file-name="custom-logo.jpg"
             />
           </div>
         </template>
@@ -431,7 +441,11 @@ export default {
       >
         <BrandImage
           class="side-menu-logo-img"
-          file-name="rancher-logo.svg"
+          file-name="custom-logo.svg"
+        />
+        <BrandImage
+          class="side-menu-logo-img"
+          file-name="custom-logo.jpg"
         />
       </div>
     </div>

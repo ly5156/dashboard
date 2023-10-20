@@ -178,8 +178,8 @@ export default {
         </n-link>
       </template>
     </Masthead>
-
     <ResourceTable
+      class="cluster-table"
       :schema="schema"
       :rows="filteredRows"
       :namespaced="false"
@@ -240,3 +240,7 @@ export default {
     </ResourceTable>
   </div>
 </template>
+
+<style scoped>
+
+</style>

@@ -6,7 +6,7 @@ import AsyncButton from '@shell/components/AsyncButton';
 import { LOGGED_OUT, SETUP } from '@shell/config/query-params';
 import { NORMAN, MANAGEMENT } from '@shell/config/types';
 import { findBy } from '@shell/utils/array';
-import { Checkbox } from '@components/Form/Checkbox';
+// import { Checkbox } from '@components/Form/Checkbox';
 import { getVendor, getProduct, setVendor } from '@shell/config/private-label';
 import { RadioGroup } from '@components/Form/Radio';
 import { setSetting } from '@shell/utils/settings';
@@ -77,7 +77,7 @@ export default {
   },
 
   components: {
-    AsyncButton, LabeledInput, CopyToClipboard, Checkbox, RadioGroup, Password, BrandImage
+    AsyncButton, LabeledInput, CopyToClipboard, RadioGroup, Password, BrandImage
   },
 
   async asyncData({ route, req, store }) {
@@ -174,9 +174,9 @@ export default {
 
   computed: {
     saveEnabled() {
-      if ( !this.eula && this.isFirstLogin) {
-        return false;
-      }
+      // if ( !this.eula && this.isFirstLogin) {
+      //   return false;
+      // }
 
       if ( this.mustChangePassword ) {
         if ( !this.current ) {
@@ -276,7 +276,7 @@ export default {
           &nbsp;
         </div>
         <div>
-          <h1 class="text-center">
+          <h1 class="text-center title">
             {{ t('setup.welcome', {product}) }}
           </h1>
 
@@ -375,7 +375,7 @@ export default {
               </div>
             </template>
 
-            <div class="checkbox mt-40">
+            <!-- <div class="checkbox mt-40">
               <Checkbox
                 id="checkbox-telemetry"
                 v-model="telemetry"
@@ -388,8 +388,8 @@ export default {
                   />
                 </template>
               </Checkbox>
-            </div>
-            <div class="checkbox pt-10 eula">
+            </div> -->
+            <!-- <div class="checkbox pt-10 eula">
               <Checkbox
                 id="checkbox-eula"
                 v-model="eula"
@@ -403,7 +403,7 @@ export default {
                   />
                 </template>
               </Checkbox>
-            </div>
+            </div> -->
           </template>
 
           <div
@@ -491,6 +491,9 @@ export default {
         font-size: 12px;
         padding: 0;
       }
+    }
+    .title {
+      color: var(--primary);
     }
 
     .setup-errors {
