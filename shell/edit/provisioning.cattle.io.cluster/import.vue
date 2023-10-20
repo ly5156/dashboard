@@ -135,7 +135,7 @@ export default {
     @finish="saveOverride"
     @error="e=>errors = e"
   >
-    <Banner
+    <!-- <Banner
       v-if="harvesterLocation"
       color="info"
       :closable="true"
@@ -146,7 +146,7 @@ export default {
       <nuxt-link :to="harvesterLocation">
         {{ t('product.harvesterManager') }}
       </nuxt-link>
-    </Banner>
+    </Banner> -->
 
     <NameNsDescription
       v-if="!isView"

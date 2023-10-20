@@ -1634,11 +1634,11 @@ cluster:
       nodeAffinity: 节点亲和性
     banners:
       advanced: 以下是高级配置，通常不修改。
-      tolerations: 其他 Pod 容忍度将添加到 Rancher 应用的默认容忍度中。
+      tolerations: 其他 Pod 容忍度将添加到应用的默认容忍度中。
       limits: Pod 请求和限制没有默认配置。
       windowsCompatibility: "不建议删除用于阻止 <b>Agent</b> 在 Windows 节点上运行的节点亲和性规则，因为这不是受支持的配置。"
     affinity:
-      default: 使用 Rancher 定义的默认亲和性规则
+      default: 使用定义的默认亲和性规则
       custom: 使用自定义亲和性规则
   advanced:
     argInfo:
@@ -1748,7 +1748,7 @@ cluster:
       searchPlaceholder: 请输入搜索
       noResults: 没有匹配的结果
   privateRegistry:
-    label: 为 Rancher 系统容器镜像启用集群级别的容器镜像仓库
+    label: 为系统容器镜像启用集群级别的容器镜像仓库
     description: "如果启用，Rancher 将在集群配置期间从该镜像仓库中拉取容器镜像。默认情况下，Rancher 在安装 Rancher 的官方 Helm Chart 应用程序时也会使用此镜像仓库。如果集群级别的镜像仓库被禁用，将从全局设置中的系统默认镜像仓库中拉取系统镜像。"
     docsLinkRke2: "如需配置私有镜像仓库 mirror 的帮助，请参阅 RKE2 <a href=\"https://docs.rke2.io/install/containerd_registry_configuration/\" target=\"_blank\">文档</a>。"
     docsLinkK3s: "如需配置私有镜像仓库 mirror 的帮助，请参阅 K3s <a href=\"https://docs.k3s.io/installation/private-registry\" target=\"_blank\">文档</a>。"
@@ -3063,7 +3063,7 @@ members:
       label: 自定义
       description: 为该用户自定义角色。
       lockedRole: 该角色已锁定。
-  localClusterWarning: "注意：这是 Rancher 用来存储数据的集群。只有管理员才应该对该集群有写权限。能够写入此集群的用户可以授权自己访问该安装的任何内容。"
+  localClusterWarning: "注意：这是用来存储数据的集群。只有管理员才应该对该集群有写权限。能够写入此集群的用户可以授权自己访问该安装的任何内容。"
   noRolesAssigned: 没有分配给该项目的用户。
 
 membershipEditor:

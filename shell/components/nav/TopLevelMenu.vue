@@ -112,7 +112,7 @@ export default {
       const options = this.options;
 
       return options.filter((opt) => {
-        const filterApps = (opt.inStore === 'management' || opt.isMultiClusterApp) && opt.category !== 'configuration' && opt.category !== 'legacy';
+        const filterApps = (opt.inStore === 'management' || opt.isMultiClusterApp) && opt.category !== 'configuration' && opt.category !== 'legacy' && opt.category !== 'hci';
 
         if (this.isRancherInHarvester) {
           return filterApps && opt.category !== 'hci';
@@ -132,7 +132,7 @@ export default {
     configurationApps() {
       const options = this.options;
 
-      return options.filter(opt => opt.category === 'configuration');
+      return options.filter(opt => opt.category === 'configuration' && opt.value !== 'uiplugins');
     },
 
     hciApps() {
@@ -462,7 +462,7 @@ export default {
           </template>
           <div class="pad" />
         </div>
-        <div class="footer">
+        <!-- <div class="footer">
           <div
             v-if="canEditSettings"
             @click="hide()"
@@ -479,7 +479,7 @@ export default {
               {{ t('about.title') }}
             </nuxt-link>
           </div>
-        </div>
+        </div> -->
       </div>
     </transition>
   </div>

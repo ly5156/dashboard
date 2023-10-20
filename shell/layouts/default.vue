@@ -661,7 +661,7 @@ export default {
             <span>{{ t('nav.clusterTools') }}</span>
           </a>
         </n-link>
-        <div
+        <!-- <div
           v-if="showProductFooter"
           class="footer"
         >
@@ -709,7 +709,7 @@ export default {
               </template>
             </v-popover>
           </span>
-        </div>
+        </div> -->
         <div
           v-else
           class="version text-muted flex"

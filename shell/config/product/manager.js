@@ -111,10 +111,10 @@ export function init(store) {
     exact:      true
   });
 
-  basicType([
-    'rke-templates',
-    'rke-node-templates'
-  ], 'RKE1Configuration');
+  // basicType([
+  //   'rke-templates',
+  //   'rke-node-templates'
+  // ], 'RKE1Configuration');
 
   weightType(CAPI.MACHINE_DEPLOYMENT, 3, true);
   weightType(CAPI.MACHINE_SET, 2, true);

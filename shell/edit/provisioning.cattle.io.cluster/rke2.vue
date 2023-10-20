@@ -2769,9 +2769,9 @@ export default {
           label-key="cluster.tabs.registry"
         >
           <div class="row">
-            <h3>Registry for Rancher System Container Images</h3>
+            <h3>Registry for System Container Images</h3>
           </div>
-          <div class="row">
+          <!-- <div class="row">
             <div class="col span-12">
               <Banner
                 :closable="false"
@@ -2780,7 +2780,7 @@ export default {
                 label-key="cluster.privateRegistry.description"
               />
             </div>
-          </div>
+          </div> -->
           <div class="row">
             <Checkbox
               v-model="showCustomRegistryInput"
