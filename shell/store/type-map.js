@@ -648,7 +648,8 @@ export const getters = {
           group = _ensureGroup(root, 'starred');
           group.weight = 1000;
         } else if ( mode === USED ) {
-          group = _ensureGroup(root, `inUse::${ getters.groupLabelFor(typeObj.schema) }`);
+          continue;
+          // group = _ensureGroup(root, `inUse::${ getters.groupLabelFor(typeObj.schema) }`);
         } else {
           group = _ensureGroup(root, typeObj.schema || typeObj.group || ROOT);
         }
