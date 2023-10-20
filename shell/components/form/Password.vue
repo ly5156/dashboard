@@ -149,8 +149,11 @@ export default {
     flex-direction: column;
     .labeled-input {
       .addon {
+          position: absolute;
           padding-left: 12px;
           min-width: 65px;
+          top: 35px;
+          right: 0;
       }
     }
     .genPassword {
