@@ -1,7 +1,7 @@
 <script>
-import { LabeledInput } from '@components/Form/LabeledInput';
+// import { LabeledInput } from '@components/Form/LabeledInput';
 import ColorInput from '@shell/components/form/ColorInput';
-import TypeDescription from '@shell/components/TypeDescription';
+// import TypeDescription from '@shell/components/TypeDescription';
 
 import { Checkbox } from '@components/Form/Checkbox';
 import FileSelector from '@shell/components/form/FileSelector';
@@ -23,7 +23,7 @@ export default {
   layout: 'authenticated',
 
   components: {
-    LabeledInput, Checkbox, FileSelector, Loading, SimpleBox, AsyncButton, Banner, ColorInput, TypeDescription
+    Checkbox, FileSelector, Loading, SimpleBox, AsyncButton, Banner, ColorInput
   },
 
   async fetch() {
@@ -189,9 +189,9 @@ export default {
     <h1 class="mb-20">
       {{ t('branding.label') }}
     </h1>
-    <TypeDescription resource="branding" />
+    <!-- <TypeDescription resource="branding" /> -->
     <div>
-      <div class="row mb-20">
+      <!-- <div class="row mb-20">
         <div class="col span-6">
           <LabeledInput
             v-model="uiPLSetting.value"
@@ -200,7 +200,7 @@ export default {
             :maxlength="100"
           />
         </div>
-      </div>
+      </div> -->
       <h3 class="mt-20 mb-5 pb-5">
         {{ t('branding.logos.label') }}
       </h3>

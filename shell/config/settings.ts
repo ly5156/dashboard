@@ -94,8 +94,8 @@ export const SETTING = {
 // These are the settings that are allowed to be edited via the UI
 export const ALLOWED_SETTINGS: GlobalSetting = {
   [SETTING.CA_CERTS]:            { kind: 'multiline', readOnly: true },
-  [SETTING.ENGINE_URL]:          {},
-  [SETTING.ENGINE_ISO_URL]:      {},
+  // [SETTING.ENGINE_URL]:          {},
+  // [SETTING.ENGINE_ISO_URL]:      {},
   [SETTING.PASSWORD_MIN_LENGTH]: {
     kind:    'integer',
     ruleSet: [

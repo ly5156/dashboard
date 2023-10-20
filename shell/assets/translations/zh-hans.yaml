@@ -6997,7 +6997,7 @@ featureFlags:
     istio-virtual-service-ui: 暴露了一个用户界面，使用户能够创建、读取、更新和删除虚拟服务和目标规则，这是 Istio 的流量管理功能。
     token-hashing: 启用 Token 的单程 hash。一旦启用 Token hash 就不能被禁用。
     continuous-delivery: Fleet 中的 Gitops 组件
-    fleet: 启动 Rancher 时安装 Fleet
+    fleet: 启动时安装 Fleet
     multi-cluster-management: Kubernetes 集群的多集群配置和管理。
     rke2: 启用 RKE2
 
@@ -7103,7 +7103,7 @@ branding:
   directoryName: 品牌资产目录名称
   logos:
     label: Logo
-    tip: '上传 Logo 以替换顶层导航标题中的 Rancher logo。图片的高度应为 21 像素，最大宽度为 200 像素。最大文件大小为 20KB。支持的格式：JPEG、PNG、SVG。'
+    tip: '上传 Logo 以替换顶层导航标题中的logo。图片的高度应为 21 像素，最大宽度为 200 像素。最大文件大小为 20KB。支持的格式：JPEG、PNG、SVG。'
     lightPreview: 浅色主题预览
     darkPreview: 深色主题预览
     uploadLight: 上传浅色 Logo
@@ -7111,7 +7111,7 @@ branding:
     useCustom: 使用自定义 Logo
   favicon:
     label: 网站图标
-    tip: '上传一个网站图标来替换浏览器选项卡中的 Rancher 图标。最大文件大小为 20KB'
+    tip: '上传一个网站图标来替换浏览器选项卡中的图标。最大文件大小为 20KB'
     preview: 网站图标预览
     upload: 上传网站图标
     useCustom: 使用自定义网站图标

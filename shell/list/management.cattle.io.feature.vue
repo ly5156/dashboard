@@ -74,7 +74,9 @@ export default {
     ...mapGetters({ t: 'i18n/t' }),
 
     filteredRows() {
-      return this.rows.filter(x => x.name !== 'fleet');
+      const ingnoreFeatrues = ['harvester', 'harvester-baremetal-container-workload', 'legacy', 'rke1-custom-node-cleanup'];
+
+      return this.rows.filter(x => x.name !== 'fleet' && !ingnoreFeatrues.includes(x.id));
     },
 
     promptForUrl() {

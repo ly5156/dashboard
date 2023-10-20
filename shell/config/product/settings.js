@@ -61,25 +61,25 @@ export function init(store) {
     }
   });
 
-  virtualType({
-    ifHaveType: MANAGEMENT.SETTING,
-    labelKey:   'branding.label',
-    name:       'brand',
-    namespaced: false,
-    weight:     98,
-    icon:       'folder',
-    route:      { name: 'c-cluster-settings-brand' }
-  });
+  // virtualType({
+  //   ifHaveType: MANAGEMENT.SETTING,
+  //   labelKey:   'branding.label',
+  //   name:       'brand',
+  //   namespaced: false,
+  //   weight:     98,
+  //   icon:       'folder',
+  //   route:      { name: 'c-cluster-settings-brand' }
+  // });
 
-  virtualType({
-    ifHaveType: MANAGEMENT.SETTING,
-    labelKey:   'banner.settingName',
-    name:       'banners',
-    namespaced: false,
-    weight:     98,
-    icon:       'folder',
-    route:      { name: 'c-cluster-settings-banners' }
-  });
+  // virtualType({
+  //   ifHaveType: MANAGEMENT.SETTING,
+  //   labelKey:   'banner.settingName',
+  //   name:       'banners',
+  //   namespaced: false,
+  //   weight:     98,
+  //   icon:       'folder',
+  //   route:      { name: 'c-cluster-settings-banners' }
+  // });
 
   virtualType({
     ifHaveType: MANAGEMENT.SETTING,
@@ -91,15 +91,15 @@ export function init(store) {
     route:      { name: 'c-cluster-settings-performance' }
   });
 
-  virtualType({
-    ifHaveType: MANAGEMENT.SETTING,
-    labelKey:   'customLinks.label',
-    name:       'links',
-    namespaced: false,
-    weight:     96,
-    icon:       'folder',
-    route:      { name: 'c-cluster-settings-links' }
-  });
+  // virtualType({
+  //   ifHaveType: MANAGEMENT.SETTING,
+  //   labelKey:   'customLinks.label',
+  //   name:       'links',
+  //   namespaced: false,
+  //   weight:     96,
+  //   icon:       'folder',
+  //   route:      { name: 'c-cluster-settings-links' }
+  // });
 
   basicType([
     'settings',
