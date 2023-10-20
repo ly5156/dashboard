@@ -129,7 +129,7 @@ export const ALLOWED_SETTINGS: GlobalSetting = {
   [SETTING.SERVER_URL]:                           { kind: 'url', canReset: true },
   [SETTING.RKE_METADATA_CONFIG]:                  { kind: 'json' },
   [SETTING.SYSTEM_DEFAULT_REGISTRY]:              {},
-  [SETTING.UI_INDEX]:                             {},
+  // [SETTING.UI_INDEX]:                             {},
   [SETTING.UI_DASHBOARD_INDEX]:                   {},
   [SETTING.UI_OFFLINE_PREFERRED]:                 {
     kind:    'enum',
