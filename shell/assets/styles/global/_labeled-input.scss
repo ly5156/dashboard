@@ -69,8 +69,8 @@
     // padding: $input-padding-lg 0 0 0;
     margin: $input-padding-lg 0 0 0;
     line-height: calc(#{$input-line-height} + 1px);
-    border-radius: var(--border-radius);
-    border: solid var(--border-width) var(--input-border);
+    // border-radius: var(--border-radius);
+    // border: solid var(--border-width) var(--input-border);
 
     &.no-label {
       padding: $input-padding-sm 0px $input-padding-sm 0px;
