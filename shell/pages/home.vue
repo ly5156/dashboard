@@ -5,7 +5,7 @@ import BannerGraphic from '@shell/components/BannerGraphic';
 import IndentedPanel from '@shell/components/IndentedPanel';
 import SortableTable from '@shell/components/SortableTable';
 import { BadgeState } from '@components/BadgeState';
-import CommunityLinks from '@shell/components/CommunityLinks';
+// import CommunityLinks from '@shell/components/CommunityLinks';
 import SingleClusterInfo from '@shell/components/SingleClusterInfo';
 import { mapGetters, mapState } from 'vuex';
 import { MANAGEMENT, CAPI } from '@shell/config/types';
@@ -31,7 +31,7 @@ export default {
     IndentedPanel,
     SortableTable,
     BadgeState,
-    CommunityLinks,
+    // CommunityLinks,
     SingleClusterInfo,
   },
 
@@ -308,7 +308,7 @@ export default {
       pref-key="welcomeBanner"
     />
     <IndentedPanel class="mt-20 mb-20">
-      <div
+      <!-- <div
         v-if="!readWhatsNewAlready"
         class="row"
       >
@@ -326,7 +326,7 @@ export default {
             ><span v-clean-html="t('landing.whatsNewLink')" /></a>
           </Banner>
         </div>
-      </div>
+      </div> -->
 
       <div class="row home-panels">
         <div class="col main-panel">
@@ -457,7 +457,7 @@ export default {
             </div>
           </div>
         </div>
-        <CommunityLinks class="col span-3 side-panel" />
+        <!-- <CommunityLinks class="col span-3 side-panel" /> -->
       </div>
     </IndentedPanel>
   </div>
