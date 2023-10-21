@@ -1958,6 +1958,10 @@ export default {
       box-shadow: 1px 0px 0 0px var(--sortable-table-top-divider) inset, -1px 0px 0 0px var(--sortable-table-top-divider) inset, 0 -11px 0 0px var(--sortable-table-top-divider) inset;
       border-bottom: 20px solid var(--sortable-table-row-bg);
     }
+    & tbody tr.sub-row.empty-taints {
+      box-shadow: 0px 0px 0 1px var(--sortable-table-top-divider);
+      border-bottom: 20px solid var(--sortable-table-row-bg);
+    }
     & tbody tr.group-row + tr {
       box-shadow: 0 2px 0 0px var(--sortable-table-top-divider) inset, 0px -11px 0 0px var(--sortable-table-top-divider) inset, 1px 0px 0 0px var(--sortable-table-top-divider) inset, -1px 0px 0 0px var(--sortable-table-top-divider) inset;
     }
