@@ -1937,4 +1937,35 @@ export default {
       min-width: 200px;
     }
   }
+  // custom style
+
+  .sortable-table {
+    outline: none;
+    & tbody tr.main-row {
+      border-bottom: 20px solid var(--sortable-table-row-bg);
+      box-shadow: 0 11px 0 0px var(--sortable-table-top-divider) inset, 0px -11px 0 0px var(--sortable-table-top-divider) inset, 1px 0px 0 0px var(--sortable-table-top-divider) inset, -1px 0px 0 0px var(--sortable-table-top-divider) inset;
+      &:first-of-type {
+        box-shadow: 0 -10px 0 1px var(--sortable-table-top-divider) inset
+      }
+    }
+    & tbody tr.main-row.has-sub-row{
+      box-shadow: 0 11px 0 0px var(--sortable-table-top-divider) inset, 1px 0px 0 0px var(--sortable-table-top-divider) inset, -1px 0px 0 0px var(--sortable-table-top-divider) inset;
+      &:first-child {
+        box-shadow: -1px 0px 0 0px var(--sortable-table-top-divider) inset,1px 0px 0 0px var(--sortable-table-top-divider) inset;
+      }
+    }
+    & tbody tr.sub-row {
+      box-shadow: 1px 0px 0 0px var(--sortable-table-top-divider) inset, -1px 0px 0 0px var(--sortable-table-top-divider) inset, 0 -11px 0 0px var(--sortable-table-top-divider) inset;
+      border-bottom: 20px solid var(--sortable-table-row-bg);
+    }
+    & tbody tr.group-row + tr {
+      box-shadow: 0 2px 0 0px var(--sortable-table-top-divider) inset, 0px -11px 0 0px var(--sortable-table-top-divider) inset, 1px 0px 0 0px var(--sortable-table-top-divider) inset, -1px 0px 0 0px var(--sortable-table-top-divider) inset;
+    }
+    & tbody.group tr.group-row + tr.main-row.has-sub-row {
+      box-shadow: 0 2px 0 0px var(--sortable-table-top-divider) inset, 1px 0px 0 0px var(--sortable-table-top-divider) inset, -1px 0px 0 0px var(--sortable-table-top-divider) inset;
+    }
+    & tbody.group tr.main-row.has-sub-row {
+      box-shadow: 0 11px 0 0px var(--sortable-table-top-divider) inset, 1px 0px 0 0px var(--sortable-table-top-divider) inset, -1px 0px 0 0px var(--sortable-table-top-divider) inset;
+    }
+  }
   </style>
