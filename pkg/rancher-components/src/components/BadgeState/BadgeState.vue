@@ -74,7 +74,7 @@ export default Vue.extend({
     display: inline-flex;
     padding: 2px 10px;
     border: 1px solid transparent;
-    border-radius: 20px;
+    border-radius: 4px;
 
     &.bg-info {
       border-color: var(--primary);
@@ -90,8 +90,8 @@ export default Vue.extend({
 
     // Successful states are de-emphasized by using [text-]color instead of background-color
     &.bg-success {
-      color: var(--success);
-      background: transparent;
+      // color: var(--success);
+      // background: transparent;
       border-color: var(--success);
     }
   }
