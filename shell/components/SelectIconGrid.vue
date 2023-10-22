@@ -205,7 +205,8 @@ export default {
       margin: $margin;
       padding: $margin;
       position: relative;
-      //border-radius: calc( 1.5 * var(--border-radius));
+      // border-radius: calc( 1.5 * var(--border-radius));
+      border-radius: 4px;
       border: 1px solid var(--border);
       text-decoration: none !important;
       color: $color;
@@ -221,13 +222,14 @@ export default {
         position: absolute;
         top: 10px;
         right: 10px;
-        padding: 2px 5px;
+        padding: 4px 4px;
+        border-radius: 4px;
 
-        &.indicator {
-          top: 0;
-          right: 0;
-          left: 0;
-        }
+        // &.indicator {
+        //   top: 0;
+        //   right: 0;
+        //   left: 0;
+        // }
 
       }
 
@@ -248,6 +250,7 @@ export default {
         bottom: 10px;
         padding: 2px 5px;
         right: 10px;
+        border-radius: 4px;
       }
 
       label.os-incompatible-label {
@@ -258,7 +261,7 @@ export default {
       .logo {
         text-align: center;
         position: absolute;
-        left: $side+$margin;
+        right: $side+$margin;
         top: math.div(($height - $logo), 2);
         width: $logo;
         height: $logo;
@@ -347,10 +350,10 @@ export default {
         border-left-width: $hover-border-width;
         //padding-left: $margin+(-$hover-border-width);
         .logo {
-          left: 1px+$side+$margin+(-$hover-border-width);
+          right: 1px+$side+$margin+(-$hover-border-width);
         }
         .name {
-          margin-left: $side+$logo+$margin+1px+(-$hover-border-width);
+          margin-right: $side+$logo+$margin+1px+(-$hover-border-width);
 
         }
       }
@@ -361,7 +364,7 @@ export default {
         text-overflow: ellipsis;
         line-height: $height - (2 * $margin);
         margin: 0;
-        margin-left: $side+$logo+$margin;
+        margin-right: $side+$logo+$margin;
       }
 
       &.has-description {
@@ -379,8 +382,8 @@ export default {
 
       .description {
         margin-top: $margin;
-        margin-left: $side+$logo+$margin;
-        margin-right: $margin;
+        margin-right: $side+$logo+$margin;
+        // margin-left: $margin;
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 3;

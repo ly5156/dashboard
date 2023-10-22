@@ -173,9 +173,6 @@ export default {
         @click="select(slide, i)"
       >
         <div class="slide-content">
-          <div class="slide-img">
-            <img :src="slide.icon ? slide.icon : `/_nuxt/shell/assets/images/generic-catalog.svg`">
-          </div>
           <div class="slide-content-right">
             <BadgeState
               :label="slide.repoName"
@@ -183,6 +180,9 @@ export default {
             />
             <h1>{{ slide.chartNameDisplay }} {{ i + 1 }}</h1>
             <p>{{ slide.chartDescription }}</p>
+          </div>
+          <div class="slide-img">
+            <img :src="slide.icon ? slide.icon : `/_nuxt/shell/assets/images/generic-catalog.svg`">
           </div>
         </div>
       </div>
@@ -294,10 +294,13 @@ export default {
     }
 
     .slide-content-right {
-      border-left: 1px solid var(--tabbed-border);
-      margin-left: 30px;
-      padding-left: 30px;
+      // border-left: 1px solid var(--tabbed-border);
+      // margin-left: 30px;
+      // padding-left: 30px;
 
+      border-right: 1px solid var(--tabbed-border);
+      margin-right: 30px;
+      padding-right: 30px;
       span {
         margin: 0;
       }
