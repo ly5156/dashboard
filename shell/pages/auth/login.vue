@@ -482,7 +482,7 @@ export default {
 
       <BrandImage
         class="col span-6 landscape"
-        file-name="login-landscape.svg"
+        file-name="login-landscape.jpg"
       />
     </div>
   </main>
