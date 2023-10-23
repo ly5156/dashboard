@@ -301,12 +301,12 @@ export default {
     v-if="managementReady"
     class="home-page"
   >
-    <BannerGraphic
+    <!-- <BannerGraphic
       :small="true"
       :title="t('landing.welcomeToRancher', {vendor})"
       :pref="HIDE_HOME_PAGE_CARDS"
       pref-key="welcomeBanner"
-    />
+    /> -->
     <IndentedPanel class="mt-20 mb-20">
       <!-- <div
         v-if="!readWhatsNewAlready"
@@ -330,7 +330,7 @@ export default {
 
       <div class="row home-panels">
         <div class="col main-panel">
-          <div
+          <!-- <div
             v-if="!showSetLoginBanner"
             class="mb-10 row"
           >
@@ -349,7 +349,7 @@ export default {
                 ><span v-clean-html="t('landing.landingPrefs.userPrefs')" /></a>
               </Banner>
             </div>
-          </div>
+          </div> -->
           <div class="row panel">
             <div
               v-if="mcm"
