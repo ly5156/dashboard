@@ -193,7 +193,7 @@ export default {
 <style lang='scss' scoped>
 .input-container {
   display: flex;
-
+  align-items: baseline;
   &.select-after {
     height: 100%;
     flex-direction: row-reverse;
@@ -246,13 +246,13 @@ export default {
     border-collapse: separate;
 
     &:hover:not(.focused):not(.disabled):not(:focus):not(.view) {
-      border-left: 1px solid var(--input-hover-border);
-      border-right: 1px solid var(--input-hover-border);
+      // border-left: 1px solid var(--input-hover-border);
+      // border-right: 1px solid var(--input-hover-border);
       padding-left: 9px;
     }
     &.focused, &:focus {
-      border-left: 1px solid var(--outline) !important;
-      border-right: 1px solid var(--outline) !important;
+      // border-left: 1px solid var(--outline) !important;
+      // border-right: 1px solid var(--outline) !important;
       padding-left: 9px;
     }
   }
@@ -260,21 +260,21 @@ export default {
   & .in-input {
     margin-right: 0;
 
-    &:hover:not(.focused):not(.disabled):not(.view) {
-      border: 1px solid var(--input-hover-border) !important;
-    }
+    // &:hover:not(.focused):not(.disabled):not(.view) {
+    //   border: 1px solid var(--input-hover-border) !important;
+    // }
 
-    &.focused {
-      border: 1px solid var(--outline) !important;
-    }
+    // &.focused {
+    //   border: 1px solid var(--outline) !important;
+    // }
 
-    &:hover:not(.focused):not(.disabled) {
-      border: 1px solid var(--input-hover-border) !important;
-    }
+    // &:hover:not(.focused):not(.disabled) {
+    //   border: 1px solid var(--input-hover-border) !important;
+    // }
 
-    &.focused {
-      border: 1px solid var(--outline) !important;
-    }
+    // &.focused {
+    //   border: 1px solid var(--outline) !important;
+    // }
 
     &.labeled-select.focused ::v-deep,
     &.unlabeled-select.focused ::v-deep {
@@ -283,7 +283,7 @@ export default {
 
     &.labeled-select:not(.disabled):not(.view) ::v-deep,
     &.unlabeled-select:not(.disabled):not(.view) ::v-deep {
-      border: solid 1px var(--input-border);
+      // border: solid 1px var(--input-border);
     }
 
     &.labeled-select ::v-deep,
@@ -306,7 +306,7 @@ export default {
 
       .v-select:not(.vs--disabled) {
         .vs__dropdown-toggle {
-          border-radius: var(--border-radius) 0 0 var(--border-radius);
+          // border-radius: 0 var(--border-radius) var(--border-radius) 0 ;
         }
         &.vs--open {
           .vs__dropdown-toggle {
