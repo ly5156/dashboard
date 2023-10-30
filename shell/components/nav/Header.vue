@@ -12,7 +12,8 @@ import ClusterBadge from '@shell/components/ClusterBadge';
 import { LOGGED_OUT } from '@shell/config/query-params';
 import NamespaceFilter from './NamespaceFilter';
 import WorkspaceSwitcher from './WorkspaceSwitcher';
-import TopLevelMenu from './TopLevelMenu';
+// import TopLevelMenu from './TopLevelMenu';
+import GlobalMenu from './GlobalMenu.vue';
 import Jump from './Jump';
 import { allHash } from '@shell/utils/promise';
 import { ActionLocation, ExtensionPoint } from '@shell/core/types';
@@ -28,7 +29,8 @@ export default {
     NamespaceFilter,
     WorkspaceSwitcher,
     Import,
-    TopLevelMenu,
+    // TopLevelMenu,
+    GlobalMenu,
     Jump,
     BrandImage,
     ClusterBadge,
@@ -339,7 +341,8 @@ export default {
     ref="header"
   >
     <div>
-      <TopLevelMenu v-if="isRancherInHarvester || isMultiCluster || !isSingleProduct" />
+      <!-- <TopLevelMenu v-if="isRancherInHarvester || isMultiCluster || !isSingleProduct" /> -->
+      <GlobalMenu v-if="isRancherInHarvester || isMultiCluster || !isSingleProduct" />
     </div>
     <div
       class="menu-spacer"
