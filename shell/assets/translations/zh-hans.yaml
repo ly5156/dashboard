@@ -123,7 +123,7 @@ nav:
     download: 下载 KubeConfig
     copy: 将 KubeConfig 复制到剪切板
     options: KubeConfig 选项
-  import: 导入 YAML
+  import: 导入 配置文件
   home: 首页
   shell: Kubectl Shell
   shellShortcut: Kubectl Shell {key}
@@ -142,10 +142,10 @@ nav:
     inUse: 更多资源
     Policy: 策略
     rbac: RBAC
-    serviceDiscovery: 服务发现
+    serviceDiscovery: 服务管理
     starred: 已收藏
     storage: 存储
-    workload: 工作负载
+    workload: 应用管理
     monitoring: 监控
     advanced: 高级选项
     RKE1Configuration: RKE1 配置
@@ -198,7 +198,7 @@ nav:
     separator: 或者
 
 product:
-  apps: 应用
+  apps: 应用市场
   auth: 用户 & 认证
   backup: Rancher 备份
   cis: CIS Benchmark
@@ -2037,14 +2037,14 @@ resource:
 
 cruResource:
   backToForm: 返回表单编辑
-  backBody: 返回表单编辑不会保留对 YAML 做出的所有更改
-  cancelBody: 返回表单编辑不会保留对 YAML 做出的所有更改
+  backBody: 返回表单编辑不会保留对 配置文件 做出的所有更改
+  cancelBody: 返回表单编辑不会保留对 配置文件 做出的所有更改
   confirmBack: "确认"
   confirmCancel: "确认"
-  reviewForm: "继续编辑 YAML"
-  reviewYaml: "继续编辑 YAML"
-  previewYaml: 以 YAML 文件编辑
-  showYaml: 以 YAML 形式查看
+  reviewForm: "继续编辑 配置文件"
+  reviewYaml: "继续编辑 配置文件"
+  previewYaml: 编辑配置文件
+  showYaml: 查看配置文件
 
 detailText:
   collapse: 隐藏
