@@ -920,7 +920,7 @@ catalog:
     project: 安装到项目
     section:
       chartOptions: 编辑选项
-      valuesYaml: 编辑 YAML
+      valuesYaml: 编辑 配置文件
       diff: 比较变化
     slideIn:
       dock: 停靠到 shell
@@ -4643,7 +4643,7 @@ resourceYaml:
     namespaceRequired: 这个资源是有命名空间的，所以必须提供一个命名空间。
   buttons:
     continue: 继续编辑
-    edit: 编辑 YAML
+    edit: 编辑 配置文件
     diff: 显示差异
     hideDiff: 隐藏差异
     unified: 统一
@@ -6828,16 +6828,16 @@ typeLabel:
 action:
   clone: 克隆
   disable: 禁用
-  download: 下载 YAML
+  download: 下载 配置文件
   edit: 编辑配置
-  editYaml: 编辑 YAML
+  editYaml: 编辑 配置文件
   enable: 启用
   openLogs: 查看日志
   refresh: 刷新
   remove: 删除
   view: 查看配置
   viewInApi: 在 API 中查看
-  viewYaml: 查看 YAML
+  viewYaml: 查看 配置文件
   activate: 激活
   deactivate: 停用
   show: 显示

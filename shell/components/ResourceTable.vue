@@ -342,7 +342,7 @@ export default {
         },
         {
           tooltipKey: this.groupTooltip,
-          icon:       'icon-folder',
+          icon:       'icon-list-grouped',
           value:      'namespace',
         },
       ];
