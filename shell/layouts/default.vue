@@ -389,9 +389,9 @@ export default {
           continue;
         }
 
-        if (productId === 'apps') {
-          continue;
-        }
+        // if (productId === 'apps') {
+        //   continue;
+        // }
 
         if ( productId === EXPLORER ) {
           modes.push(FAVORITE);
