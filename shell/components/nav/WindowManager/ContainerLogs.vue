@@ -2,7 +2,7 @@
 import { saveAs } from 'file-saver';
 import AnsiUp from 'ansi_up';
 import { addParams } from '@shell/utils/url';
-import { base64Decode } from '@shell/utils/crypto';
+import { base64DecodeToBuffer } from '@shell/utils/crypto';
 import { LOGS_RANGE, LOGS_TIME, LOGS_WRAP } from '@shell/store/prefs';
 import LabeledSelect from '@shell/components/form/LabeledSelect';
 import { Checkbox } from '@components/Form/Checkbox';
@@ -25,6 +25,48 @@ import Window from './Window';
 
 let lastId = 1;
 const ansiup = new AnsiUp();
+
+const ab2str = (input, outputEncoding = 'utf8') => {
+  const decoder = new TextDecoder(outputEncoding);
+
+  return decoder.decode(input);
+};
+const isLogTruncated = (uint8ArrayBuffer) => {
+  const len = uint8ArrayBuffer.length;
+  const count = Math.min(4, len);
+  let isTruncated = false;
+
+  for ( let i = 0; i < count; i++ ) {
+    const a = uint8ArrayBuffer[len - (1 + i)];
+
+    if ((a & 0b10000000) === 0b00000000) { // 1 byte utf-8 char
+      break;
+    }
+    if ((a & 0b11000000) === 0b10000000) {
+      continue;
+    }
+    if ((a & 0b11100000) === 0b11000000) { // 2 byte utf-8 char start
+      if ( i !== 1) {
+        isTruncated = true;
+      }
+      break;
+    }
+    if ((a & 0b11110000) === 0b11100000) { // 3 byte utf-8 char start
+      if (i !== 2) {
+        isTruncated = true;
+      }
+      break;
+    }
+    if ((a & 11111000) === 0b11110000) { // 4 byte utf-8 char start
+      if (i !== 3) {
+        isTruncated = true;
+      }
+      break;
+    }
+  }
+
+  return isTruncated;
+};
 
 export default {
   components: {
@@ -273,34 +315,73 @@ export default {
         console.error('Connect Error', e); // eslint-disable-line no-console
       });
 
+      let logBuffer = [];
+      let truncatedLog = '';
+
       this.socket.addEventListener(EVENT_MESSAGE, (e) => {
-        const line = base64Decode(e.detail.data);
+        const b = base64DecodeToBuffer(e.detail.data.replace(/[-_]/g, (char) => char === '-' ? '+' : '/'));
+        const isTruncated = isLogTruncated(b);
 
-        let msg = line;
-        let time = null;
+        if (isTruncated === true) {
+          logBuffer.push(...b);
 
-        const idx = line.indexOf(' ');
-
-        if ( idx > 0 ) {
-          const timeStr = line.substr(0, idx);
-          const date = new Date(timeStr);
-
-          if ( !isNaN(date.getSeconds()) ) {
-            time = date.toISOString();
-            msg = line.substr(idx + 1);
-          }
+          return;
         }
 
-        const parsedLine = {
-          id:     lastId++,
-          msg:    ansiup.ansi_to_html(msg),
-          rawMsg: msg,
-          time,
-        };
+        let d;
 
-        Object.freeze(parsedLine);
+        if (logBuffer.length > 0) {
+          d = ab2str(Uint8Array.of(...logBuffer, ...b));
+          logBuffer = [];
+        } else {
+          d = b.toString();
+        }
+        let data = d;
 
-        this.backlog.push(parsedLine);
+        if (truncatedLog) {
+          data = `${ truncatedLog }${ d }`;
+          truncatedLog = '';
+        }
+
+        if (!d.endsWith('\n')) {
+          const lines = data.trim().split(/\n/);
+
+          if (lines.length === 1) {
+            truncatedLog = data;
+
+            return;
+          }
+          data = lines.slice(0, -1).join('\n');
+          truncatedLog = lines.slice(-1);
+        }
+        data.trim().split(/\n/).filter((line) => line)
+          .forEach((line) => {
+            let msg = line;
+            let time = null;
+
+            const idx = line.indexOf(' ');
+
+            if ( idx > 0 ) {
+              const timeStr = line.substr(0, idx);
+              const date = new Date(timeStr);
+
+              if ( !isNaN(date.getSeconds()) ) {
+                time = date.toISOString();
+                msg = line.substr(idx + 1);
+              }
+            }
+
+            const parsedLine = {
+              id:     lastId++,
+              msg:    ansiup.ansi_to_html(msg),
+              rawMsg: msg,
+              time,
+            };
+
+            Object.freeze(parsedLine);
+
+            this.backlog.push(parsedLine);
+          });
       });
 
       this.socket.connect();
