@@ -330,7 +330,9 @@ export const mutations = {
 };
 
 export const actions = {
-  async load(ctx, { force, reset, inStore } = {}) {
+  async load(ctx, {
+    force, reset, inStore, repo: repoName
+  } = {}) {
     const {
       state, getters, rootGetters, commit, dispatch
     } = ctx;
@@ -364,8 +366,7 @@ export const actions = {
     const loaded = [];
 
     promises = {};
-
-    for ( const repo of repos ) {
+    for ( const repo of (repoName ? repos.filter((r) => r.id === repoName) : repos) ) {
       if ( (force === true || !getters.isLoaded(repo)) && repo.canLoad ) {
         console.info('Loading index for repo', repo.name, `(${ repo._key })`); // eslint-disable-line no-console
         promises[repo._key] = repo.followLink('index');
