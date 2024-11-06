@@ -2024,10 +2024,12 @@ containerResourceLimit:
   label: 容器默认资源限制
   limitsCpu: CPU 限制
   limitsGpu: NVIDIA GPU 限制/预留
+  limitsEphemeralStorage: 本地临时存储限制
   limitsMemory: 内存限制
   memPlaceholder: 例如：128
   requestsCpu: CPU 预留
   requestsMemory: 内存预留
+  requestEphemeralStorage: 本地临时存储预留
 
 
 resource:

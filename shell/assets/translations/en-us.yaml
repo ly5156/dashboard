@@ -2205,9 +2205,11 @@ containerResourceLimit:
   limitsCpu: CPU Limit
   limitsGpu: NVIDIA GPU Limit/Reservation
   limitsMemory: Memory Limit
+  limitsEphemeralStorage: Ephemeral Storage limit
   memPlaceholder: e.g. 128
   requestsCpu: CPU Reservation
   requestsMemory: Memory Reservation
+  requestEphemeralStorage: Ephemeral Storage Reservation
 
 
 resource:

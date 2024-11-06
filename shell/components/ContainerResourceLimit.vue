@@ -44,18 +44,18 @@ export default {
 
   data() {
     const {
-      limitsCpu, limitsMemory, requestsCpu, requestsMemory, limitsGpu
+      limitsCpu, limitsMemory, requestsCpu, requestsMemory, limitsGpu, requestEphemeralStorage, limitsEphemeralStorage
     } = this.value;
 
     return {
-      limitsCpu, limitsMemory, requestsCpu, requestsMemory, limitsGpu, viewMode: _VIEW
+      limitsCpu, limitsMemory, requestsCpu, requestsMemory, limitsGpu, requestEphemeralStorage, limitsEphemeralStorage, viewMode: _VIEW
     };
   },
 
   watch: {
     value() {
       const {
-        limitsCpu, limitsMemory, requestsCpu, requestsMemory, limitsGpu
+        limitsCpu, limitsMemory, requestsCpu, requestsMemory, limitsGpu, requestEphemeralStorage, limitsEphemeralStorage
       } = this.value;
 
       this.limitsCpu = limitsCpu;
@@ -63,6 +63,8 @@ export default {
       this.requestsCpu = requestsCpu;
       this.requestsMemory = requestsMemory;
       this.limitsGpu = limitsGpu;
+      this.requestEphemeralStorage = requestEphemeralStorage;
+      this.limitsEphemeralStorage = limitsEphemeralStorage;
     }
   },
 
@@ -94,7 +96,9 @@ export default {
         limitsMemory,
         requestsCpu,
         requestsMemory,
-        limitsGpu
+        limitsGpu,
+        requestEphemeralStorage,
+        limitsEphemeralStorage
       } = this;
 
       this.$emit('input', cleanUp({
@@ -102,7 +106,9 @@ export default {
         limitsMemory,
         requestsCpu,
         limitsGpu,
-        requestsMemory
+        requestsMemory,
+        requestEphemeralStorage,
+        limitsEphemeralStorage
       }));
     },
 
@@ -112,7 +118,9 @@ export default {
         limitsMemory,
         requestsCpu,
         requestsMemory,
-        limitsGpu
+        limitsGpu,
+        requestEphemeralStorage,
+        limitsEphemeralStorage
       } = this;
       const namespace = this.namespace; // no deep copy in destructure proxy yet
 
@@ -121,7 +129,9 @@ export default {
         limitsMemory,
         requestsCpu,
         limitsGpu,
-        requestsMemory
+        requestsMemory,
+        requestEphemeralStorage,
+        limitsEphemeralStorage
       });
 
       if (namespace) {
@@ -140,7 +150,9 @@ export default {
           limitsMemory,
           requestsCpu,
           requestsMemory,
-          limitsGpu
+          limitsGpu,
+          requestEphemeralStorage,
+          limitsEphemeralStorage
         } = JSON.parse(defaults);
 
         this.limitsCpu = limitsCpu;
@@ -148,6 +160,8 @@ export default {
         this.requestsCpu = requestsCpu;
         this.requestsMemory = requestsMemory;
         this.limitsGpu = limitsGpu;
+        this.requestEphemeralStorage = requestEphemeralStorage;
+        this.limitsEphemeralStorage = limitsEphemeralStorage;
       }
     },
   }
@@ -228,6 +242,34 @@ export default {
           :increment="1024"
           :output-modifier="true"
           data-testid="memory-limit"
+          @input="updateLimits"
+        />
+      </span>
+    </div>
+    <div class="row mb-20">
+      <span class="col span-6">
+        <UnitInput
+          v-model="requestEphemeralStorage"
+          :placeholder="t('containerResourceLimit.memPlaceholder')"
+          :label="t('containerResourceLimit.requestEphemeralStorage')"
+          :mode="mode"
+          :input-exponent="2"
+          :increment="1024"
+          :output-modifier="true"
+          data-testid="ephemeral-storage-reservation"
+          @input="updateLimits"
+        />
+      </span>
+      <span class="col span-6">
+        <UnitInput
+          v-model="limitsEphemeralStorage"
+          :placeholder="t('containerResourceLimit.memPlaceholder')"
+          :label="t('containerResourceLimit.limitsEphemeralStorage')"
+          :mode="mode"
+          :input-exponent="2"
+          :increment="1024"
+          :output-modifier="true"
+          data-testid="ephemeral-storage-limit"
           @input="updateLimits"
         />
       </span>
