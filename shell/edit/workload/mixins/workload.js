@@ -53,6 +53,7 @@ import { TYPES as SECRET_TYPES } from '@shell/models/secret';
 import LabeledInputSugget from '@shell/components/form/LabeledInputSugget';
 import debounce from 'lodash/debounce';
 import GpuResourceLimit from '@shell/components/GpuResourceLimit';
+import HamiResourceLimit from '@shell/components/HamiResourceLimit';
 import { SETTING } from '@shell/config/settings';
 import { defaultContainer } from '@shell/models/workload';
 import { allHash } from '@shell/utils/promise';
@@ -72,7 +73,6 @@ const TAB_WEIGHT_MAP = {
 };
 
 const GPU_KEY = 'nvidia.com/gpu';
-const GPU_SHARED_KEY = 'rancher.io/gpu-mem';
 const VGPU_KEY = 'virtaitech.com/gpu';
 const DUAL_NETWORK_CARD = '[{"name":"static-macvlan-cni-attach","interface":"eth1"}]';
 const MACVLAN_SERVICE = 'macvlan.panda.io/macvlanService';
@@ -106,6 +106,20 @@ const serialMaker = function() {
   };
 }();
 
+const HAMI_RESOUCE_LIMITS_OPTIONS = [
+  { label: 'nvidia.com/gpu', value: 'nvidia.com/gpu' },
+  { label: 'nvidia.com/gpumem', value: 'nvidia.com/gpumem' },
+  { label: 'nvidia.com/gpumem-percentage', value: 'nvidia.com/gpumem-percentage' },
+  { label: 'nvidia.com/gpucores', value: 'nvidia.com/gpucores' },
+  { label: 'nvidia.com/priority', value: 'nvidia.com/priority' },
+  { label: 'huawei.com/Ascend910A', value: 'huawei.com/Ascend910A' },
+  { label: 'huawei.com/Ascend910A-memory', value: 'huawei.com/Ascend910A-memory' },
+  { label: 'huawei.com/Ascend910B', value: 'huawei.com/Ascend910B' },
+  { label: 'huawei.com/Ascend910B-memory', value: 'huawei.com/Ascend910B-memory' },
+  { label: 'huawei.com/Ascend310P', value: 'huawei.com/Ascend310P' },
+  { label: 'huawei.com/Ascend310P-memory', value: 'huawei.com/Ascend310P-memory' },
+];
+
 export default {
   name:       'CruWorkload',
   components: {
@@ -136,7 +150,8 @@ export default {
     WorkloadPorts,
     ContainerMountPaths,
     LabeledInputSugget,
-    GpuResourceLimit
+    GpuResourceLimit,
+    HamiResourceLimit
   },
 
   mixins: [CreateEditView, ResourceManager],
@@ -308,6 +323,7 @@ export default {
       idKey:                     ID_KEY,
 
       systemGpuManagementSchedulerName: '',
+      hamiResourceLimtsOptions:         HAMI_RESOUCE_LIMITS_OPTIONS
     };
   },
 
@@ -526,47 +542,67 @@ export default {
         }
 
         return {
-          limitsGpuShared:   limits[GPU_SHARED_KEY],
-          limitsGpu:         limits[GPU_KEY],
-          limitsVgpu:        limits[VGPU_KEY],
-          requestsGpuShared: requests[GPU_SHARED_KEY],
-          requestsGpu:       requests[GPU_KEY],
+          limitsGpu:   limits[GPU_KEY],
+          limitsVgpu:  limits[VGPU_KEY],
+          requestsGpu: requests[GPU_KEY],
           limitGpuDevice,
           requestGpuDevice,
         };
       },
       set(neu) {
         const {
-          limitsGpuShared, limitsGpu, limitsVgpu, requestsGpuShared, requestsGpu, limitGpuDevice = {}, requestGpuDevice = {}
+          limitsGpu, limitsVgpu, requestsGpu, limitGpuDevice = {}, requestGpuDevice = {}
         } = neu;
-        const schedulerName = this.podTemplateSpec.schedulerName;
         const { limits = {}, requests = {} } = this.container.resources || {};
 
         const out = {
           requests: {
             ...requests,
-            [GPU_SHARED_KEY]: requestsGpuShared,
-            [GPU_KEY]:        requestsGpu,
+            [GPU_KEY]: requestsGpu,
 
             [limitGpuDevice.name]: limitGpuDevice.value
           },
           limits: {
             ...limits,
-            [GPU_SHARED_KEY]: limitsGpuShared,
-            [GPU_KEY]:        limitsGpu,
-            [VGPU_KEY]:       limitsVgpu,
+            [GPU_KEY]:  limitsGpu,
+            [VGPU_KEY]: limitsVgpu,
 
             [requestGpuDevice.name]: requestGpuDevice.value
           }
         };
 
         this.$set(this.container, 'resources', cleanUp(out));
+      }
+    },
 
-        if (requestsGpuShared && limitsGpuShared && (!schedulerName || schedulerName === 'default-scheduler')) {
-          this.podTemplateSpec.schedulerName = this.systemGpuManagementSchedulerName;
-        } else if ((!requestsGpuShared || !limitsGpuShared) && this.systemGpuManagementSchedulerName && schedulerName === this.systemGpuManagementSchedulerName) {
-          this.podTemplateSpec.schedulerName = '';
-        }
+    flatHamiResources: {
+      get() {
+        const { limits = {} } = this.container.resources || {};
+        const keys = this.hamiResourceLimtsOptions.map((item) => item.value);
+
+        return Object.entries(limits).filter(([k]) => keys.includes(k)).reduce((t, [k, v]) => {
+          t[k] = v;
+
+          return t;
+        }, {});
+      },
+      set(v) {
+        const { limits = {}, requests = {} } = this.container.resources || {};
+        const resetLimits = this.hamiResourceLimtsOptions.map((item) => item.value).reduce((t, c) => {
+          t[c] = null;
+
+          return t;
+        }, {});
+        const out = {
+          requests: { ...requests },
+          limits:   {
+            ...limits,
+            ...resetLimits,
+            ...v
+          }
+        };
+
+        this.$set(this.container, 'resources', cleanUp(out));
       }
     },
 

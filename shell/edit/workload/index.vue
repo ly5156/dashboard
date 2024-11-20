@@ -332,6 +332,11 @@ export default {
                 v-model="flatGpuResources"
                 :mode="mode"
               />
+              <HamiResourceLimit
+                v-model="flatHamiResources"
+                :mode="mode"
+                :options="hamiResourceLimtsOptions"
+              />
             </Tab>
 
             <Tab

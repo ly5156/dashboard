@@ -1,0 +1,18 @@
+rancherHami:
+  title: HAMi
+  subTitle: 安装
+  installView:
+    steps:
+      hami:
+        label: 安装 Chart
+        title: HAMi 应用安装
+        tips: 跳转到 HAMi 应用安装页面。
+        appInstall:
+          label: 安装 HAMi
+      monitoring:
+        label: 安装 Chart
+        title: Rancher Monitoring 应用安装
+        # tips: 在安装 HAMi 之前需要先安装Rancher Monitoring 应用，跳转到 Rancher Monitoring 安装页面。
+        appInstall:
+          label: 安装 Rancher Monitoring
+          skip: 跳过，直接安装 HAMi

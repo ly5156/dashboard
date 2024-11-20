@@ -15,24 +15,8 @@
             :labels="modeLabels"
           />
         </div>
-        <template v-if="gpuReservationMode === 'shared'">
-          <div>
-            <UnitInput
-              v-model="gpuShared"
-              :suffix="t('gpuReservation.memUnit')"
-              :placeholder="t('gpuReservation.placeholder')"
-              :label="t('gpuReservation.shared')"
-              min="1"
-              :mode="mode"
-              @input="updateGpuShared"
-            />
-            <Banner
-              color="warning"
-              :label="t('gpuReservation.sharedTips')"
-            />
-          </div>
-        </template>
-        <template v-else-if="gpuReservationMode === 'set'">
+
+        <template v-if="gpuReservationMode === 'set'">
           <div>
             <UnitInput
               v-model="gpuSet"
@@ -116,18 +100,15 @@ export default {
   },
   data() {
     const {
-      limitsGpuShared, limitsGpu, limitsVgpu, requestsGpuShared, requestsGpu, limitGpuDevice, requestGpuDevice
+      limitsGpu, limitsVgpu, requestsGpu, limitGpuDevice, requestGpuDevice
     } = this.value;
 
     let gpuReservationMode = 'set';
-    let gpuShared = null;
+    const gpuShared = null;
     let gpuSet = null;
     const gpuDevice = { ...limitGpuDevice };
 
-    if (limitsGpuShared && requestsGpuShared) {
-      gpuReservationMode = 'shared';
-      gpuShared = requestsGpuShared;
-    } else if (limitsGpu && requestsGpu) {
+    if (limitsGpu && requestsGpu) {
       gpuReservationMode = 'set';
       gpuSet = requestsGpu;
     } else if (limitGpuDevice.name && requestGpuDevice.name) {
@@ -137,10 +118,6 @@ export default {
     return {
       gpuReservationMode,
       gpuReservationModeOptions: [
-        {
-          label: this.t('gpuReservation.shared'),
-          value: 'shared',
-        },
         {
           label: this.t('gpuReservation.set'),
           value: 'set',
